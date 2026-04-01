@@ -582,19 +582,18 @@ function buildCalendar(guests) {
 
   const rowsHtml = guests.map((g, idx)=>{
     const arr=localDate(g.arrival), dep=localDate(g.departure);
-    if(!arr||!dep||isNaN(arr)||isNaN(dep)) return '';
+    // Build cells — if no dates, render empty row with just the name
     const cells=days.map(d=>{
       const isEv=sameDay(d,EVENT_DATE);
-      const isHere=d>=arr&&d<=dep;
+      const isHere = arr && dep && !isNaN(arr) && !isNaN(dep) && d>=arr && d<=dep;
       const cls=isHere?(isEv?'cal-cell here event':'cal-cell here'):(isEv?'cal-cell event':'cal-cell');
       return `<div class="${cls}"></div>`;
     }).join('');
-    // First row = hosts: show all names as one line, larger, no subtext
     const nameCell = idx===0
       ? `<div class="cal-name-td"><div class="cal-poc cal-poc-host">${g.names}</div></div>`
       : `<div class="cal-name-td"><div class="cal-poc">${g.poc}</div><div class="cal-names">${g.names}</div></div>`;
     return `<div class="cal-row">${nameCell}<div class="cal-cells">${cells}</div></div>`;
-  }).filter(Boolean).join('');
+  }).join('');
 
   el.innerHTML = `
     <div class="cal-head">
@@ -739,7 +738,7 @@ async function initCalendar() {
         const departure  = normalizeDate(r[depCol]);
         return { poc, names, arrival, departure };
       })
-      .filter(g => g.arrival && g.departure);
+      .filter(g => g.poc); // keep all guests, even without dates
 
     if (!guests.length) throw new Error('no usable date rows');
 
