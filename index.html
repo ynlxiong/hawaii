@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aloha & I Do — Hawaii</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --sand:#F5EDD8;--sand-dark:#E8D9B8;--sand-mid:#EFE3C3;
+  --ocean:#1A6B8A;--ocean-light:#2E8FAD;--ocean-deep:#0D4A63;
+  --hibiscus:#C94B6A;--palm:#2D6A4F;--gold:#C4924A;
+  --text-dark:#2A2520;--text-mid:#5C5248;--text-light:#8C7E72;--white:#FFFDF8;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--text-dark);min-height:100vh;}
+a{color:var(--ocean);}
+
+/* ── PASSWORD GATE ── */
+#gate{position:fixed;inset:0;z-index:9999;background:linear-gradient(155deg,var(--ocean-deep) 0%,var(--ocean) 60%,#3AA8C8 100%);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1.4rem;padding:2rem;}
+.gate-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,6vw,4rem);font-weight:300;color:white;text-align:center;line-height:1.1;}
+.gate-title em{font-style:italic;color:#B8E0ED;}
+.gate-hint{font-size:0.82rem;color:rgba(255,255,255,0.55);letter-spacing:0.06em;text-align:center;}
+.gate-row{display:flex;border-radius:10px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.25);}
+#gate-input{padding:0.8rem 1.2rem;font-size:1rem;font-family:'DM Sans',sans-serif;border:none;outline:none;background:white;color:var(--text-dark);width:220px;letter-spacing:0.1em;}
+#gate-input::placeholder{letter-spacing:0;color:#bbb;}
+.gate-btn{padding:0.8rem 1.4rem;background:var(--gold);color:white;border:none;font-size:0.9rem;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;}
+.gate-btn:hover{background:#b07e38;}
+#gate-error{font-size:0.8rem;color:#FFB3B3;min-height:1.2rem;text-align:center;}
+#site{display:none;}
+
+/* ── NAV ── */
+nav{position:sticky;top:0;z-index:100;background:rgba(245,237,216,0.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--sand-dark);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:60px;}
+.nav-brand{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:300;font-style:italic;color:var(--ocean-deep);}
+.nav-links{display:flex;gap:1.4rem;list-style:none;}
+.nav-links a{font-size:0.79rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-mid);text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover{color:var(--ocean);}
+
+/* ── HERO ── */
+/* The hero background continues seamlessly into the sand section below */
+.hero-and-cel{
+  background:linear-gradient(155deg,var(--ocean-deep) 0%,var(--ocean) 55%,#3AA8C8 100%);
+  position:relative;
+}
+.hero{text-align:center;padding:5.5rem 2rem 0;color:white;position:relative;z-index:2;}
+.hero-eyebrow{font-size:0.75rem;letter-spacing:0.22em;text-transform:uppercase;opacity:0.6;margin-bottom:1rem;}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,7vw,5.5rem);font-weight:300;line-height:1.05;margin-bottom:0.5rem;}
+.hero-title em{font-style:italic;color:#B8E0ED;}
+.hero-sub{font-size:0.95rem;opacity:0.7;font-weight:300;padding-bottom:3rem;}
+
+/* ── THE CELEBRATION — sand island that arcs up from the ocean bg ── */
+/* The sand shape sits INSIDE .hero-and-cel, appearing to float on the ocean */
+.cel-island{
+  position:relative;z-index:2;
+  /* Rounded top — arcs up from the ocean */
+  background:var(--sand);
+  border-radius:48px 48px 0 0;
+  margin:0 0 0;
+  padding:3.5rem 2rem 4rem;
+  /* Rounded bottom cutout into white below */
+}
+/* The white page background arcs up into the bottom of the sand island */
+.cel-island::after{
+  content:'';
+  position:absolute;
+  bottom:-48px;
+  left:0;right:0;
+  height:48px;
+  background:var(--white);
+  border-radius:48px 48px 0 0;
+  z-index:3;
+}
+
+.cel-inner{max-width:1080px;margin:0 auto;position:relative;z-index:2;}
+.cel-sec-title{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:var(--ocean-deep);margin-bottom:0.35rem;}
+.cel-sec-sub{font-size:0.86rem;color:var(--text-mid);margin-bottom:2rem;}
+.cel-divider{width:44px;height:2px;background:var(--gold);margin:0.5rem 0 1.8rem;}
+.cel-grid{display:grid;gap:1.2rem;}
+
+/* ── CONTENT CARDS (on sand) ── */
+.sand-card{background:rgba(255,253,248,0.9);border:1px solid var(--sand-dark);border-radius:16px;overflow:hidden;box-shadow:0 2px 12px rgba(42,37,32,0.06);}
+.ev-header{background:var(--ocean-deep);padding:0.85rem 1.4rem;display:flex;align-items:center;justify-content:space-between;}
+.ev-day{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:300;font-style:italic;color:white;}
+.ev-date-lbl{font-size:0.75rem;color:rgba(255,255,255,0.55);letter-spacing:0.05em;}
+.ev-body{padding:0.8rem 1.4rem;}
+.ev-row{display:flex;gap:0.9rem;padding:0.65rem 0;border-bottom:1px solid var(--sand-dark);align-items:flex-start;}
+.ev-row:last-child{border-bottom:none;}
+.ev-time{font-size:0.76rem;font-weight:500;color:var(--text-light);min-width:58px;padding-top:2px;}
+.ev-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0;margin-top:4px;}
+.ev-info{flex:1;}
+.ev-name{font-size:0.92rem;font-weight:500;color:var(--text-dark);margin-bottom:0.1rem;}
+.ev-detail{font-size:0.8rem;color:var(--text-light);line-height:1.4;}
+.ev-badge{font-size:0.67rem;padding:2px 8px;border-radius:100px;font-weight:500;white-space:nowrap;align-self:flex-start;margin-top:2px;background:#FEE8EE;color:var(--hibiscus);}
+.dress-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.8rem;padding:1.8rem;}
+.dress-label{font-size:0.7rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:0.4rem;}
+.dress-h{font-family:'Cormorant Garamond',serif;font-size:1.55rem;font-weight:300;color:var(--ocean-deep);margin-bottom:0.7rem;line-height:1.2;}
+.dress-p{font-size:0.85rem;color:var(--text-mid);line-height:1.7;}
+.dress-note{font-size:0.78rem;color:var(--text-light);margin-top:0.8rem;line-height:1.5;}
+.dress-ex{background:var(--sand-mid);border-radius:10px;padding:0.75rem 1rem;border-left:3px solid var(--gold);margin-bottom:8px;}
+.dress-who{font-size:0.69rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-light);margin-bottom:3px;}
+.dress-what{font-size:0.83rem;color:var(--text-dark);}
+
+/* ── WHITE SECTIONS (after sand) ── */
+.white-section{background:var(--white);padding:3.5rem 2rem;}
+.white-section + .white-section{border-top:1px solid var(--sand-dark);}
+.si{max-width:1080px;margin:0 auto;}
+.sec-title{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:var(--ocean-deep);margin-bottom:0.35rem;}
+.sec-sub{font-size:0.86rem;color:var(--text-light);margin-bottom:2rem;line-height:1.6;}
+.divider{width:44px;height:2px;background:var(--gold);margin:0.5rem 0 1.8rem;}
+
+/* ── TRAVEL CALENDAR ── */
+.cal-outer{background:var(--white);border-radius:14px;border:1px solid var(--sand-dark);overflow:hidden;}
+.cal-head{display:flex;background:var(--ocean-deep);}
+.cal-name-th{width:160px;flex-shrink:0;padding:0.6rem 1rem;font-size:0.69rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:rgba(255,255,255,0.5);}
+.cal-days-th{flex:1;display:flex;}
+.cal-dh{flex:1;text-align:center;font-size:0.61rem;font-weight:500;color:rgba(255,255,255,0.6);padding:0.6rem 1px;line-height:1.3;}
+.cal-dh.ev-d{color:#FFB8C8;font-weight:700;}
+.cal-row{display:flex;border-bottom:1px solid var(--sand-dark);align-items:center;}
+.cal-row:last-child{border-bottom:none;}
+.cal-row:hover{background:rgba(245,237,216,0.3);}
+.cal-name-td{width:160px;flex-shrink:0;padding:0.55rem 1rem;}
+.cal-poc{font-size:0.83rem;font-weight:500;color:var(--text-dark);}
+.cal-names{font-size:0.72rem;color:var(--text-light);line-height:1.4;margin-top:1px;}
+.cal-cells{flex:1;display:flex;padding:6px 0;}
+.cal-cell{flex:1;height:22px;margin:0 1.5px;border-radius:3px;position:relative;cursor:default;}
+.cal-cell.here{background:var(--ocean);opacity:0.72;}
+.cal-cell.event{background:var(--hibiscus)!important;opacity:1;}
+.cal-cell .tip{position:absolute;bottom:130%;left:50%;transform:translateX(-50%);background:var(--text-dark);color:white;font-size:0.7rem;padding:3px 7px;border-radius:5px;white-space:nowrap;opacity:0;transition:opacity .15s;pointer-events:none;z-index:20;}
+.cal-cell:hover .tip{opacity:1;}
+.cal-legend{display:flex;gap:1.2rem;padding:0.75rem 1rem;border-top:1px solid var(--sand-dark);background:var(--sand);flex-wrap:wrap;}
+.leg{display:flex;align-items:center;gap:6px;font-size:0.74rem;color:var(--text-light);}
+.leg-sq{width:14px;height:14px;border-radius:3px;}
+.sheet-link{display:inline-flex;align-items:center;gap:5px;background:var(--ocean);color:white;border-radius:7px;padding:0.42rem 0.9rem;font-size:0.78rem;font-weight:500;text-decoration:none;white-space:nowrap;}
+
+/* ── WHATSAPP ── */
+.wa-wrap{background:linear-gradient(135deg,#065147 0%,#128C7E 100%);border-radius:14px;padding:1.5rem 1.8rem;display:flex;align-items:center;gap:1.2rem;margin-top:2rem;}
+.wa-icon{font-size:2.2rem;flex-shrink:0;line-height:1;}
+.wa-text{flex:1;}
+.wa-text h3{font-size:1rem;font-weight:500;color:white;margin-bottom:0.22rem;}
+.wa-text p{font-size:0.81rem;color:rgba(255,255,255,0.68);line-height:1.5;}
+.wa-btn{display:inline-flex;align-items:center;gap:6px;background:white;color:#065147;border-radius:8px;padding:0.55rem 1.1rem;font-size:0.84rem;font-weight:500;text-decoration:none;white-space:nowrap;flex-shrink:0;}
+
+/* ── ACCORDION / DROPDOWN ── */
+.accordion{border:1px solid var(--sand-dark);border-radius:14px;overflow:hidden;margin-bottom:1rem;}
+.accordion-btn{width:100%;background:var(--white);border:none;padding:1.1rem 1.4rem;display:flex;align-items:center;justify-content:space-between;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:0.95rem;font-weight:500;color:var(--ocean-deep);text-align:left;}
+.accordion-btn:hover{background:var(--sand);}
+.accordion-chevron{font-size:0.8rem;color:var(--text-light);transition:transform 0.22s;flex-shrink:0;}
+.accordion-btn.open .accordion-chevron{transform:rotate(180deg);}
+.accordion-body{display:none;border-top:1px solid var(--sand-dark);background:var(--white);}
+.accordion-body.open{display:block;}
+
+/* ── ACTIVITY TABLES ── */
+.act-section-label{font-size:0.72rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);padding:1rem 1.4rem 0.4rem;}
+.act-table{width:100%;border-collapse:collapse;}
+.act-table th{background:var(--sand-mid);padding:0.55rem 1rem;font-size:0.72rem;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;color:var(--text-mid);text-align:left;}
+.act-table td{padding:0.6rem 1rem;font-size:0.83rem;border-bottom:1px solid var(--sand-dark);color:var(--text-dark);vertical-align:top;line-height:1.5;}
+.act-table tr:last-child td{border-bottom:none;}
+.act-table tr:hover td{background:rgba(245,237,216,0.35);}
+.act-transport-header{background:var(--sand);display:flex;align-items:center;gap:8px;padding:0.7rem 1rem;border-top:1px solid var(--sand-dark);border-bottom:1px solid var(--sand-dark);font-size:0.8rem;font-weight:500;color:var(--text-mid);}
+
+/* ── FOOD TABLE ── */
+.food-table{width:100%;border-collapse:collapse;}
+.food-table th{background:var(--sand-mid);padding:0.55rem 1rem;font-size:0.72rem;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;color:var(--text-mid);text-align:left;}
+.food-table td{padding:0.6rem 1rem;font-size:0.83rem;border-bottom:1px solid var(--sand-dark);color:var(--text-dark);vertical-align:top;line-height:1.5;}
+.food-table tr:last-child td{border-bottom:none;}
+.food-table tr:hover td{background:rgba(245,237,216,0.35);}
+.food-note{font-size:0.78rem;color:var(--text-light);padding:0.8rem 1.4rem;border-top:1px solid var(--sand-dark);line-height:1.6;}
+
+/* TOAST */
+.toast{position:fixed;bottom:1.8rem;right:1.8rem;background:var(--palm);color:white;padding:0.75rem 1.3rem;border-radius:9px;font-size:0.85rem;font-weight:500;z-index:1000;transform:translateY(110px);opacity:0;transition:all .28s;}
+.toast.show{transform:translateY(0);opacity:1;}
+
+footer{background:var(--text-dark);color:rgba(255,255,255,0.42);text-align:center;padding:2rem;font-size:0.79rem;line-height:2.2;}
+footer a{color:rgba(255,255,255,0.42);}
+
+@media(max-width:700px){
+  .dress-grid{grid-template-columns:1fr;}
+  .nav-links{display:none;}
+  .wa-wrap{flex-direction:column;text-align:center;}
+  .cal-name-th,.cal-name-td{width:100px;}
+  .cel-island{border-radius:28px 28px 0 0;}
+}
+</style>
+</head>
+<body>
+
+<!-- PASSWORD GATE -->
+<div id="gate">
+  <div class="gate-title">Aloha &amp; <em>I Do</em></div>
+  <p class="gate-hint">Enter the password to access the celebration site</p>
+  <div class="gate-row">
+    <input id="gate-input" type="password" placeholder="Password" autocomplete="off"
+      onkeydown="if(event.key==='Enter')checkPw()" />
+    <button class="gate-btn" onclick="checkPw()">Enter ✦</button>
+  </div>
+  <p id="gate-error"></p>
+</div>
+
+<div id="site">
+
+<nav>
+  <div class="nav-brand">Aloha & I Do ✦ Hawaii</div>
+  <ul class="nav-links">
+    <li><a href="#event">The Celebration</a></li>
+    <li><a href="#guests">Who's Coming</a></li>
+    <li><a href="#food">Food</a></li>
+    <li><a href="#activities">Activities</a></li>
+  </ul>
+</nav>
+
+<!-- HERO + CELEBRATION — one connected background -->
+<div class="hero-and-cel">
+  <div class="hero" id="event-anchor">
+    <p class="hero-eyebrow">You're invited to celebrate with us</p>
+    <h1 class="hero-title">Aloha &amp; <em>I Do</em></h1>
+    <p class="hero-sub">A wedding celebration in Hawaii</p>
+  </div>
+
+  <!-- Sand island floats up from the ocean gradient -->
+  <div class="cel-island" id="event">
+    <div class="cel-inner">
+      <h2 class="cel-sec-title">The Celebration</h2>
+      <p class="cel-sec-sub">Everything you need to know about the day</p>
+      <div class="cel-divider"></div>
+
+      <div class="cel-grid">
+        <div class="sand-card">
+          <div class="ev-header">
+            <span class="ev-day">Friday, June 27</span>
+            <span class="ev-date-lbl">The Big Day</span>
+          </div>
+          <div class="ev-body">
+            <div class="ev-row">
+              <span class="ev-time">1:00 PM</span>
+              <div class="ev-dot" style="background:#C94B6A"></div>
+              <div class="ev-info">
+                <div class="ev-name">Wedding Celebration Brunch</div>
+                <div class="ev-detail">Come hungry, come happy — we're celebrating! Details to follow.</div>
+              </div>
+              <span class="ev-badge">All guests</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="sand-card">
+          <div class="dress-grid">
+            <div>
+              <div class="dress-label">Dress Code</div>
+              <div class="dress-h">Smart Casual<br>Hawaiian Style</div>
+              <p class="dress-p">Look great for the photographer, but keep it breezy and comfortable. Think polished resort wear — you'll be in the Hawaiian sun.</p>
+              <p class="dress-note">📸 There will be a photographer — wear something you'll love in photos!</p>
+            </div>
+            <div>
+              <div class="dress-ex">
+                <div class="dress-who">For the guys</div>
+                <div class="dress-what">Linen or cotton button-down (florals welcome!), chinos or dress shorts, loafers or clean sandals</div>
+              </div>
+              <div class="dress-ex">
+                <div class="dress-who">For the ladies</div>
+                <div class="dress-what">Flowy sundress, midi dress, or tropical print — beachy elegance. Wedges or sandals are perfect.</div>
+              </div>
+              <div class="dress-ex">
+                <div class="dress-who">Good palette</div>
+                <div class="dress-what">Whites, pastels, tropical prints, soft blues &amp; greens — Hawaii colors look gorgeous in photos</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WHO'S COMING — travel calendar only, back on white -->
+<div class="white-section" id="guests" style="padding-top:5rem;">
+  <div class="si">
+    <h2 class="sec-title">Who's Coming</h2>
+    <p class="sec-sub">Everyone's Hawaii dates at a glance. <span style="color:var(--hibiscus);font-weight:500;">Pink = June 27 brunch.</span> Update your dates in the <a href="https://docs.google.com/spreadsheets/d/1zSEKiMWck87hSToY6_syvAi8UcQdCLfvg62L2jbp5Gc/edit" target="_blank">Google Sheet</a> and reload — the calendar refreshes automatically.</p>
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:1.8rem;flex-wrap:wrap;">
+      <div class="divider" style="margin:0;"></div>
+      <a class="sheet-link" href="https://docs.google.com/spreadsheets/d/1zSEKiMWck87hSToY6_syvAi8UcQdCLfvg62L2jbp5Gc/edit" target="_blank">✏️ Update your travel dates</a>
+    </div>
+
+    <div class="cal-outer" id="cal-outer">
+      <div style="display:flex;align-items:center;gap:10px;color:var(--text-light);font-size:0.86rem;padding:1.5rem 1rem;">
+        <div style="width:16px;height:16px;border:2px solid var(--sand-dark);border-top-color:var(--ocean);border-radius:50%;animation:spin .75s linear infinite;flex-shrink:0;"></div>
+        Building calendar…
+      </div>
+    </div>
+    <style>@keyframes spin{to{transform:rotate(360deg);}}</style>
+
+    <!-- WhatsApp -->
+    <div class="wa-wrap">
+      <div class="wa-icon">💬</div>
+      <div class="wa-text">
+        <h3>We have a group WhatsApp!</h3>
+        <p>Use it to coordinate plans, share updates, and stay in touch with everyone in real time.</p>
+      </div>
+      <!-- ✏️ Replace href with your actual WhatsApp group invite link -->
+      <a class="wa-btn" href="https://chat.whatsapp.com/REPLACE_WITH_YOUR_LINK" target="_blank">Join the Group →</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOD -->
+<div class="white-section" id="food">
+  <div class="si">
+    <h2 class="sec-title">Food &amp; Drink</h2>
+    <p class="sec-sub">The brunch menu — expand to view</p>
+    <div class="divider"></div>
+
+    <div class="accordion">
+      <button class="accordion-btn" onclick="toggleAccordion(this)">
+        🍽️ Brunch Menu
+        <span class="accordion-chevron">▼</span>
+      </button>
+      <div class="accordion-body">
+        <p class="food-note">Menu details coming soon — check back closer to the date!</p>
+      </div>
+    </div>
+
+    <div class="accordion">
+      <button class="accordion-btn" onclick="toggleAccordion(this)">
+        🍹 Drinks
+        <span class="accordion-chevron">▼</span>
+      </button>
+      <div class="accordion-body">
+        <p class="food-note">Details coming soon!</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ACTIVITIES -->
+<div class="white-section" id="activities">
+  <div class="si">
+    <h2 class="sec-title">Activities &amp; Recommendations</h2>
+    <p class="sec-sub">Our favourite things to do in Honolulu — expand each section to explore</p>
+    <div class="divider"></div>
+
+    <!-- WALKABLE -->
+    <div class="accordion">
+      <button class="accordion-btn" onclick="toggleAccordion(this)">
+        🚶 Walkable from Queen Kapiolani Hotel
+        <span class="accordion-chevron">▼</span>
+      </button>
+      <div class="accordion-body">
+        <table class="act-table">
+          <thead><tr><th>Place</th><th>What to Do</th><th>Hours / Notes</th></tr></thead>
+          <tbody>
+            <tr><td>Waikiki Beach</td><td>Swim, surf, sunset views</td><td>Always open, crowded midday</td></tr>
+            <tr><td>Kapiolani Park</td><td>Morning walk, picnic, chill time</td><td>Open daily, great sunrise spot</td></tr>
+            <tr><td>International Market Place</td><td>Shopping, casual dining</td><td>Open daily, varies by store</td></tr>
+            <tr><td>Diamond Head State Monument</td><td>Iconic hike, panoramic views</td><td>Reservation required, go early (hot + limited entry)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- NEED TRANSPORT -->
+    <div class="accordion">
+      <button class="accordion-btn" onclick="toggleAccordion(this)">
+        🚗 Need Transport (Uber / car / bus)
+        <span class="accordion-chevron">▼</span>
+      </button>
+      <div class="accordion-body">
+        <table class="act-table">
+          <thead><tr><th>Place</th><th>What to Do</th><th>Hours / Notes</th></tr></thead>
+          <tbody>
+            <tr><td>Hanauma Bay</td><td>Snorkeling, clear water, marine life</td><td>Reservations required, closed Mondays/Tuesdays</td></tr>
+            <tr><td>Pearl Harbor National Memorial</td><td>Historic WWII site</td><td>Timed entry tickets recommended</td></tr>
+            <tr><td>North Shore Oahu</td><td>Shrimp trucks, beaches, surfing</td><td>Full-day trip recommended</td></tr>
+            <tr><td>Lanikai Beach</td><td>Beautiful turquoise water, soft sand</td><td>Limited parking, go early</td></tr>
+            <tr><td>Ala Moana Center</td><td>Shopping + food</td><td>Open daily</td></tr>
+            <tr><td>Catamaran Sunset Cruise</td><td>Sunset sailing experience</td><td>Book ahead, weather dependent</td></tr>
+            <tr><td>Surf Lessons (Waikiki)</td><td>Beginner-friendly surfing</td><td>Book in advance or same-day</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  Made with aloha ✦ Hawaii, June 2025<br>
+  <a href="https://docs.google.com/spreadsheets/d/1zSEKiMWck87hSToY6_syvAi8UcQdCLfvg62L2jbp5Gc/edit" target="_blank">Edit the Google Sheet</a> to update travel dates
+</footer>
+
+</div><!-- /site -->
+<div class="toast" id="toast"></div>
+
+<script>
+// ── PASSWORD ──────────────────────────────────────────────
+const PASSWORD = 'kewpie';
+function checkPw() {
+  const v = document.getElementById('gate-input').value;
+  if (v === PASSWORD) {
+    document.getElementById('gate').style.display = 'none';
+    document.getElementById('site').style.display = 'block';
+    sessionStorage.setItem('hw_auth','1');
+    buildCalendar();
+  } else {
+    const e = document.getElementById('gate-error');
+    e.textContent = 'Incorrect — try again!';
+    document.getElementById('gate-input').value = '';
+    setTimeout(() => e.textContent = '', 3000);
+  }
+}
+if (sessionStorage.getItem('hw_auth') === '1') {
+  document.getElementById('gate').style.display = 'none';
+  document.getElementById('site').style.display = 'block';
+}
+
+// ── ACCORDION ─────────────────────────────────────────────
+function toggleAccordion(btn) {
+  const body = btn.nextElementSibling;
+  const isOpen = body.classList.contains('open');
+  btn.classList.toggle('open', !isOpen);
+  body.classList.toggle('open', !isOpen);
+}
+
+// ── GUEST DATA ────────────────────────────────────────────
+const GUESTS = [
+  { poc:'Diana',  names:'Diana, Lily',                          arrival:'2025-06-22', departure:'2025-06-29' },
+  { poc:'Linda',  names:'Linda, Jules',                         arrival:'2025-06-24', departure:'2025-06-30' },
+  { poc:'Remy',   names:'Remy, Clara, Ada',                     arrival:'2025-06-24', departure:'2025-07-01' },
+  { poc:'Eric',   names:'Eric, Mavis, Melody, Emerson',         arrival:'2025-06-22', departure:'2025-07-01' },
+  { poc:'Alison', names:'Alison, Daiki, Kei, Liane',            arrival:'2025-06-26', departure:'2025-06-29' },
+  { poc:'Dan',    names:'Dan, Wendy, Marcus, Margaret',         arrival:'2025-06-24', departure:'2025-06-30' },
+  { poc:'Yilun',  names:'Yilun, Yingying',                      arrival:'2025-06-26', departure:'2025-06-28' },
+  { poc:'Keiko',  names:'Keiko, Jordan',                        arrival:'2025-06-24', departure:'2025-06-29' },
+];
+
+const EVENT_DATE = new Date('2025-06-27');
+const DOW = ['Su','Mo','Tu','We','Th','Fr','Sa'];
+const MON = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+function dateKey(d){ return d.toISOString().slice(0,10); }
+
+function buildCalendar() {
+  const el = document.getElementById('cal-outer');
+  const allDates = GUESTS.flatMap(g => [new Date(g.arrival), new Date(g.departure)]);
+  const minD = new Date(Math.min(...allDates, EVENT_DATE));
+  const maxD = new Date(Math.max(...allDates, EVENT_DATE));
+  minD.setDate(minD.getDate()-1);
+  maxD.setDate(maxD.getDate()+1);
+
+  const days = [];
+  let cur = new Date(minD);
+  while (cur <= maxD) { days.push(new Date(cur)); cur.setDate(cur.getDate()+1); }
+
+  const headCells = days.map(d => {
+    const isEv = dateKey(d) === dateKey(EVENT_DATE);
+    return `<div class="cal-dh${isEv?' ev-d':''}">${MON[d.getMonth()]} ${d.getDate()}<br>${DOW[d.getDay()]}</div>`;
+  }).join('');
+
+  const rowsHtml = GUESTS.map(g => {
+    const arr = new Date(g.arrival);
+    const dep = new Date(g.departure);
+    const cells = days.map(d => {
+      const isEv   = dateKey(d) === dateKey(EVENT_DATE);
+      const isHere = d >= arr && d <= dep;
+      const cls = isHere ? (isEv ? 'cal-cell here event' : 'cal-cell here') : (isEv ? 'cal-cell event' : 'cal-cell');
+      const tipTxt = isHere ? (isEv ? `${g.poc} — Brunch day! 🌺` : `${g.poc} is in Hawaii`) : (isEv ? 'Brunch 🌺' : '');
+      return `<div class="${cls}">${tipTxt ? `<div class="tip">${tipTxt}</div>` : ''}</div>`;
+    }).join('');
+    return `<div class="cal-row">
+      <div class="cal-name-td">
+        <div class="cal-poc">${g.poc}</div>
+        <div class="cal-names">${g.names}</div>
+      </div>
+      <div class="cal-cells">${cells}</div>
+    </div>`;
+  }).join('');
+
+  el.innerHTML = `
+    <div class="cal-head">
+      <div class="cal-name-th">Guest</div>
+      <div class="cal-days-th">${headCells}</div>
+    </div>
+    ${rowsHtml}
+    <div class="cal-legend">
+      <div class="leg"><div class="leg-sq" style="background:var(--ocean);opacity:0.72"></div>In Hawaii</div>
+      <div class="leg"><div class="leg-sq" style="background:var(--hibiscus)"></div>June 27 — Brunch</div>
+    </div>`;
+}
+
+if (sessionStorage.getItem('hw_auth') === '1') buildCalendar();
+</script>
+</body>
+</html>
