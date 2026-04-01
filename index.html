@@ -36,12 +36,15 @@ nav{
   background:rgba(245,237,216,0.96);backdrop-filter:blur(8px);
   border-bottom:1px solid var(--sand-dark);
   padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:60px;
+  transition:transform 0.3s ease;
 }
+nav.hide{transform:translateY(-100%);}
+nav.show{transform:translateY(0);}
 .nav-brand{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:300;font-style:italic;color:var(--ocean-deep);}
 .nav-links{display:flex;gap:0.7rem;list-style:none;align-items:center;}
 
-/* Primary CTA — The Celebration */
-.nav-links .nav-primary{
+/* Primary CTA */
+.nav-primary{
   background:var(--ocean-deep);
   color:white;
   border-radius:8px;
@@ -49,18 +52,18 @@ nav{
   font-size:0.79rem;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;
   text-decoration:none;transition:background 0.18s;white-space:nowrap;
 }
-.nav-links .nav-primary:hover{background:var(--ocean);}
+.nav-primary:hover{background:var(--ocean);}
 
 /* Secondary links */
-.nav-links .nav-secondary{
+.nav-secondary{
   font-size:0.75rem;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;
   color:var(--text-light);text-decoration:none;padding:0.38rem 0.5rem;
   border-radius:6px;transition:color 0.18s;white-space:nowrap;
 }
-.nav-links .nav-secondary:hover{color:var(--ocean-deep);}
+.nav-secondary:hover{color:var(--ocean-deep);}
 
 /* ── HERO + CELEBRATION wrapper ── */
-.hero-and-cel{background:linear-gradient(155deg,var(--ocean-deep) 0%,var(--ocean) 55%,#3AA8C8 100%);position:relative;}
+.hero-and-cel{background:linear-gradient(155deg,var(--ocean-deep) 0%,var(--ocean) 55%,#3AA8C8 100%);position:relative;padding-bottom:3rem;}
 .hero{text-align:center;padding:5.5rem 2rem 0;color:white;position:relative;z-index:2;}
 .hero-eyebrow{font-size:0.75rem;letter-spacing:0.22em;text-transform:uppercase;opacity:0.6;margin-bottom:1rem;}
 .hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,7vw,5.5rem);font-weight:300;line-height:1.05;margin-bottom:0.5rem;}
@@ -71,12 +74,10 @@ nav{
 .cel-island{
   position:relative;z-index:2;
   background:var(--sand);
-  border-radius:48px 48px 0 0;
+  border-radius:48px 48px 48px 48px;
+  margin:0 1.5rem 2.5rem;
   padding:3.5rem 2rem 4rem;
-}
-.cel-island::after{
-  content:'';position:absolute;bottom:-48px;left:0;right:0;
-  height:48px;background:var(--white);border-radius:48px 48px 0 0;z-index:3;
+  box-shadow:0 8px 32px rgba(42,37,32,0.08);
 }
 .cel-inner{max-width:1080px;margin:0 auto;position:relative;z-index:2;}
 .cel-sec-title{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:var(--ocean-deep);margin-bottom:0.35rem;}
@@ -212,15 +213,15 @@ nav{
 .toast{position:fixed;bottom:1.8rem;right:1.8rem;background:var(--palm);color:white;padding:0.75rem 1.3rem;border-radius:9px;font-size:0.85rem;font-weight:500;z-index:1000;transform:translateY(110px);opacity:0;transition:all .28s;}
 .toast.show{transform:translateY(0);opacity:1;}
 
-footer{background:var(--text-dark);color:rgba(255,255,255,0.42);text-align:center;padding:2rem;font-size:0.79rem;line-height:2.2;}
-footer a{color:rgba(255,255,255,0.42);}
+footer{background:var(--ocean-deep);color:rgba(255,255,255,0.45);text-align:center;padding:2rem;font-size:0.79rem;line-height:2.2;}
+footer a{color:rgba(255,255,255,0.45);}
 
 @media(max-width:700px){
   .dress-grid{grid-template-columns:1fr;}
   .nav-links .nav-secondary{display:none;}
   .wa-wrap{flex-direction:column;text-align:center;}
   .cal-name-th,.cal-name-td{width:95px;}
-  .cel-island{border-radius:28px 28px 0 0;}
+  .cel-island{border-radius:24px;margin:0 0.5rem 1.5rem;}
 }
 </style>
 </head>
@@ -241,10 +242,9 @@ footer a{color:rgba(255,255,255,0.42);}
 <div id="site">
 
 <!-- NAV — primary CTA + secondary links -->
-<nav>
-  <div class="nav-brand">Aloha & I Do ✦ Hawaii</div>
+<nav id="main-nav">
+  <a class="nav-primary" href="#event">✦ Aloha &amp; I Do ✦</a>
   <ul class="nav-links">
-    <li><a class="nav-primary" href="#event">The Celebration ✦</a></li>
     <li><a class="nav-secondary" href="#guests">Who's Coming</a></li>
     <li><a class="nav-secondary" href="#food">Food</a></li>
     <li><a class="nav-secondary" href="#activities">Activities</a></li>
@@ -256,13 +256,12 @@ footer a{color:rgba(255,255,255,0.42);}
   <div class="hero">
     <p class="hero-eyebrow">You're invited to celebrate with us</p>
     <h1 class="hero-title">Aloha &amp; <em>I Do</em></h1>
-    <p class="hero-sub">A wedding celebration in Hawaii</p>
   </div>
   <div class="cel-island" id="event">
     <div class="cel-inner">
       <h2 class="cel-sec-title">The Celebration</h2>
       <p class="cel-sec-sub">Everything you need to know about the day</p>
-      <div class="cel-divider"></div>
+      <div class="cel-divider" style="display:none"></div>
       <div class="cel-grid">
 
         <!-- Event card -->
@@ -319,11 +318,12 @@ footer a{color:rgba(255,255,255,0.42);}
 <div class="white-section" id="guests" style="padding-top:5rem;">
   <div class="si">
     <h2 class="sec-title">Who's Coming</h2>
-    <p class="sec-sub">Everyone's Hawaii dates at a glance. <span style="color:var(--hibiscus);font-weight:500;">Pink = June 27 brunch.</span></p>
-    <div style="display:flex;align-items:center;gap:10px;margin-bottom:1.8rem;flex-wrap:wrap;">
-      <div class="divider" style="margin:0;flex-shrink:0;"></div>
+    <p class="sec-sub">Everyone's Hawaii dates at a glance.</p>
+    <div style="margin-bottom:1rem;">
       <span class="sync-badge" id="guest-sync-badge"><span class="sync-dot" id="guest-sync-dot"></span><span id="guest-sync-text">Loading from sheet…</span></span>
-      <a class="sheet-link" href="https://docs.google.com/spreadsheets/d/1zSEKiMWck87hSToY6_syvAi8UcQdCLfvg62L2jbp5Gc/edit" target="_blank">✏️ Update your dates</a>
+      <div style="margin-top:0.6rem;">
+        <a class="sheet-link" href="https://docs.google.com/spreadsheets/d/1zSEKiMWck87hSToY6_syvAi8UcQdCLfvg62L2jbp5Gc/edit" target="_blank">✏️ Update your dates</a>
+      </div>
     </div>
 
     <div class="cal-outer" id="cal-outer">
@@ -345,11 +345,10 @@ footer a{color:rgba(255,255,255,0.42);}
   <div class="si">
     <h2 class="sec-title">Food &amp; Drink</h2>
     <p class="sec-sub">Our favourite places to eat and drink in Honolulu — expand each section</p>
-    <div class="divider"></div>
 
     <div class="accordion">
       <button class="accordion-btn" onclick="toggleAcc(this)">
-        <span><span class="accordion-icon">🌴</span>Easy Eats — steps from the hotel</span>
+        <span><span class="accordion-icon">🌴</span>Easy Eats — accessible from the hotel or downtown Waikiki</span>
         <span class="accordion-chevron">▼</span>
       </button>
       <div class="accordion-body">
@@ -401,7 +400,6 @@ footer a{color:rgba(255,255,255,0.42);}
   <div class="si">
     <h2 class="sec-title">Activities &amp; Recommendations</h2>
     <p class="sec-sub">Our favourite things to do in Honolulu — expand each section to explore</p>
-    <div class="divider"></div>
 
     <div class="accordion">
       <button class="accordion-btn" onclick="toggleAcc(this)">
@@ -446,7 +444,7 @@ footer a{color:rgba(255,255,255,0.42);}
 </div>
 
 <footer>
-  Made with aloha ✦ Hawaii, June 2025<br>
+  ✦ Vibe coded by yours truly ✦<br>
   <a href="https://docs.google.com/spreadsheets/d/1zSEKiMWck87hSToY6_syvAi8UcQdCLfvg62L2jbp5Gc/edit" target="_blank">Edit the Google Sheet</a> to update travel dates
 </footer>
 
@@ -475,7 +473,23 @@ if (sessionStorage.getItem('hw_auth') === '1') {
   document.getElementById('site').style.display = 'block';
 }
 
-// ── ACCORDION ─────────────────────────────────────────────────
+// ── NAV HIDE/SHOW ON SCROLL ───────────────────────────────────
+(function() {
+  let lastY = 0;
+  window.addEventListener('scroll', () => {
+    const nav = document.getElementById('main-nav');
+    if (!nav) return;
+    const y = window.scrollY;
+    if (y <= 0) {
+      nav.classList.remove('hide');   // always show at very top
+    } else if (y > lastY) {
+      nav.classList.add('hide');      // scrolling down — hide
+    } else {
+      nav.classList.remove('hide');   // scrolling up — show
+    }
+    lastY = y;
+  }, { passive: true });
+})();
 function toggleAcc(btn) {
   const body = btn.nextElementSibling;
   const open = body.classList.contains('open');
@@ -503,81 +517,64 @@ const FALLBACK_GUESTS = [
 
 const SHEET_ID = '1zSEKiMWck87hSToY6_syvAi8UcQdCLfvg62L2jbp5Gc';
 
-// Column letters in your sheet (adjust if columns move):
-// A=Names, D=Arrival Time, E=Departure Time
-// We query: select A, D, E where A is not null
-const GID_GUESTS = 0;
-
-function vizQueryUrl(gid, query) {
-  const encoded = encodeURIComponent(query);
-  return `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&gid=${gid}&tq=${encoded}`;
-}
-
-// Load via JSONP script tag — avoids CORS entirely
-function loadVizQuery(url) {
+// ── JSONP loader — confirmed working by diagnostic ─────────────
+// Uses the exact URL format that Method 3 succeeded with:
+// /gviz/tq?tqx=out:json;responseHandler:CBNAME&gid=GID&headers=1
+function jsonpQuery(gid) {
   return new Promise((resolve, reject) => {
-    const cbName = '_gviz_cb_' + Date.now();
-    const timeout = setTimeout(() => {
-      delete window[cbName];
-      reject(new Error('timeout'));
-    }, 8000);
-
-    window[cbName] = function(data) {
-      clearTimeout(timeout);
-      delete window[cbName];
+    const cb = '_gviz_' + Date.now() + '_' + gid;
+    const script = document.createElement('script');
+    const timer = setTimeout(() => {
       script.remove();
+      delete window[cb];
+      reject(new Error('timeout gid=' + gid));
+    }, 10000);
+
+    window[cb] = function(data) {
+      clearTimeout(timer);
+      script.remove();
+      delete window[cb];
       resolve(data);
     };
 
-    const script = document.createElement('script');
-    // Google wraps the JSON in google.visualization.Query.setResponse(...)
-    // We need to intercept that. Replace it temporarily.
-    const origSetResponse = window.google?.visualization?.Query?.setResponse;
-    script.src = url + `&tqx=out:json;responseHandler:${cbName}`;
-    script.onerror = () => { clearTimeout(timeout); delete window[cbName]; reject(new Error('load error')); };
+    script.src = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json;responseHandler:${cb}&gid=${gid}&headers=1`;
+    script.onerror = () => { clearTimeout(timer); delete window[cb]; reject(new Error('script error gid=' + gid)); };
     document.head.appendChild(script);
   });
 }
 
-// Parse Google Visualization JSON response into row objects
-// The response looks like: google.visualization.Query.setResponse({...})
-// We handle it via responseHandler above
-function parseVizResponse(data) {
-  if (!data || !data.table) return null;
-  const cols = data.table.cols.map(c => c.label || c.id);
-  const rows = (data.table.rows || []).map(r => {
-    const obj = {};
-    cols.forEach((col, i) => {
-      const cell = r.c[i];
-      obj[col] = cell ? (cell.f || cell.v || '') : '';
-    });
-    return obj;
-  });
-  return { cols, rows };
+// Extract rows as plain objects from gviz response
+function parseGviz(data) {
+  if (!data?.table) return null;
+  const cols = data.table.cols.map(c => (c.label || c.id || '').trim());
+  const rows = (data.table.rows || []).map(r =>
+    Object.fromEntries(cols.map((col, i) => {
+      const cell = r.c?.[i];
+      return [col, cell ? String(cell.f ?? cell.v ?? '').trim() : ''];
+    }))
+  );
+  return { cols, rows: rows.filter(r => Object.values(r).some(v => v !== '')) };
 }
 
-// Normalize date strings from sheet into YYYY-MM-DD
+// Normalize "6/22 9:45am (AS891)" → "2025-06-22"
 function normalizeDate(str) {
   if (!str) return null;
   str = str.toString().trim();
-  // Already ISO
-  if (/^\d{4}-\d{2}-\d{2}/.test(str)) return str.slice(0,10);
-  // M/D or M/D/YYYY
+  // Already ISO YYYY-MM-DD
+  if (/^\d{4}-\d{2}-\d{2}/.test(str)) return str.slice(0, 10);
+  // M/D or M/D/YYYY at start — covers "6/22 9:45am..." and "6/22"
   const md = str.match(/^(\d{1,2})\/(\d{1,2})(?:\/(\d{2,4}))?/);
   if (md) {
-    const y = md[3] ? (md[3].length===2 ? '20'+md[3] : md[3]) : '2025';
+    const y = md[3] ? (md[3].length === 2 ? '20' + md[3] : md[3]) : '2025';
     return `${y}-${md[1].padStart(2,'0')}-${md[2].padStart(2,'0')}`;
   }
   // "Jun 22" style
-  const months = {jan:1,feb:2,mar:3,apr:4,may:5,jun:6,jul:7,aug:8,sep:9,oct:10,nov:11,dec:12};
-  const mn = str.match(/(\w+)\s+(\d+)/i);
+  const MONTHS = {jan:1,feb:2,mar:3,apr:4,may:5,jun:6,jul:7,aug:8,sep:9,oct:10,nov:11,dec:12};
+  const mn = str.match(/([a-z]+)\s+(\d+)/i);
   if (mn) {
-    const mo = months[mn[1].toLowerCase().slice(0,3)];
+    const mo = MONTHS[mn[1].toLowerCase().slice(0, 3)];
     if (mo) return `2025-${String(mo).padStart(2,'0')}-${mn[2].padStart(2,'0')}`;
   }
-  // Try native parse
-  const d = new Date(str);
-  if (!isNaN(d)) return d.toISOString().slice(0,10);
   return null;
 }
 
@@ -654,51 +651,48 @@ function setSyncStatus(text, live) {
 // ── MAIN INIT ─────────────────────────────────────────────────
 async function initCalendar() {
   setSyncStatus('Loading from sheet…', false);
-
   try {
-    // Use Google Visualization Query API — most reliable no-auth approach
-    // Query: select the Names column (A), Arrival (D), Departure (E)
-    // Adjust the column letters if your sheet differs
-    const query = 'select A, D, E';
-    const url = vizQueryUrl(GID_GUESTS, query);
-    const data = await loadVizQuery(url);
-    const parsed = parseVizResponse(data);
+    // gid=0 is the Guests sheet — confirmed working via JSONP diagnostic
+    const data = await jsonpQuery(0);
+    const parsed = parseGviz(data);
+    if (!parsed?.rows?.length) throw new Error('empty response');
 
-    if (!parsed || !parsed.rows.length) throw new Error('empty');
-
-    // Map sheet rows → guest objects
-    // Try to auto-detect column names
-    const cols = parsed.cols;
-    const nameCol  = cols.find(c => /name|guest/i.test(c)) || cols[0];
-    const arrCol   = cols.find(c => /arriv/i.test(c)) || cols[1];
-    const depCol   = cols.find(c => /depart|leav/i.test(c)) || cols[2];
+    // Diagnostic confirmed column names exactly:
+    // "Names", "# of Adult", "# of Kids (under 12)", "Arrival Time", "Depature Time", "Hotel"
+    // (Note: "Depature" is a typo in the sheet — we match it anyway)
+    const nameCol = parsed.cols.find(c => /name/i.test(c)) || parsed.cols[0];
+    const arrCol  = parsed.cols.find(c => /arriv/i.test(c)) || parsed.cols[3];
+    const depCol  = parsed.cols.find(c => /dep.*time|depart|leav/i.test(c)) || parsed.cols[4];
 
     const guests = parsed.rows
       .filter(r => r[nameCol])
       .map(r => {
-        const fullName = r[nameCol];
-        // Use first name as POC, rest as names (comma separated, no & or and)
-        const cleaned = fullName.replace(/\s*&\s*/g,', ').replace(/\band\b/gi,',').replace(/\s*,\s*/g,', ').trim();
-        const parts = cleaned.split(',').map(s=>s.trim()).filter(Boolean);
-        // Strip parenthetical notes like "(5)" or "(10)"
-        const cleanParts = parts.map(p => p.replace(/\s*\(\d+\)/,'').trim());
-        const poc = cleanParts[0] || 'Guest';
-        const names = cleanParts.join(', ');
-        const arrival   = normalizeDate(r[arrCol]);
-        const departure = normalizeDate(r[depCol]);
+        const raw = r[nameCol];
+        // Clean: replace & and "and" with comma, strip "(5)" age notes
+        const cleaned = raw
+          .replace(/\s*&\s*/g, ', ')
+          .replace(/\band\b/gi, ',')
+          .replace(/\([\w\s]+\)/g, '')   // remove any parenthetical like (5), (10), (Jules)
+          .replace(/\s*,\s*/g, ', ')
+          .trim();
+        const parts = cleaned.split(',').map(s => s.trim()).filter(Boolean);
+        const poc   = parts[0] || 'Guest';
+        const names = parts.join(', ');
+        const arrival    = normalizeDate(r[arrCol]);
+        const departure  = normalizeDate(r[depCol]);
         return { poc, names, arrival, departure };
       })
       .filter(g => g.arrival && g.departure);
 
-    if (!guests.length) throw new Error('no valid dates');
+    if (!guests.length) throw new Error('no usable date rows');
 
     buildCalendar(guests);
-    setSyncStatus('Live from Google Sheet · ' + new Date().toLocaleTimeString(), true);
+    setSyncStatus('Live · synced ' + new Date().toLocaleTimeString(), true);
 
   } catch(err) {
-    console.warn('Sheet load failed, using hardcoded data:', err);
+    console.warn('Sheet JSONP failed, using fallback:', err.message);
     buildCalendar(FALLBACK_GUESTS);
-    setSyncStatus('Showing saved data — sheet unavailable', false);
+    setSyncStatus('Showing saved data', false);
   }
 }
 
