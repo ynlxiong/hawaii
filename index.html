@@ -345,53 +345,31 @@ footer a{color:rgba(255,255,255,0.45);}
   <div class="si">
     <h2 class="sec-title">Food &amp; Drink</h2>
     <p class="sec-sub">Our favourite places to eat and drink in Honolulu — expand each section</p>
-
-    <div class="accordion">
+    <div id="food-walkable-acc" class="accordion" style="display:none">
       <button class="accordion-btn" onclick="toggleAcc(this)">
         <span><span class="accordion-icon">🌴</span>Easy Eats — accessible from the hotel or downtown Waikiki</span>
         <span class="accordion-chevron">▼</span>
       </button>
       <div class="accordion-body">
         <table class="rec-table">
-          <thead><tr><th>Place</th><th>What to Get</th><th>Hours / Notes</th></tr></thead>
-          <tbody>
-            <tr><td>Da Cove Health Bar &amp; Cafe<a class="map-link" href="https://maps.google.com/?q=Da+Cove+Health+Bar+Cafe+Honolulu" target="_blank">↗</a></td><td>Acai bowls, smoothies — perfect post-beach stop</td><td>Closed Sundays, limited hours (morning–afternoon)</td></tr>
-            <tr><td>Henry's Place<a class="map-link" href="https://maps.google.com/?q=Henry%27s+Place+Honolulu+sorbet" target="_blank">↗</a></td><td>Homemade sorbet (mango, coconut, lilikoi)</td><td>Cash only, often sells out early</td></tr>
-            <tr><td>Marugame Udon<a class="map-link" href="https://maps.google.com/?q=Marugame+Udon+Waikiki+Honolulu" target="_blank">↗</a></td><td>Fresh udon + tempura (great value)</td><td>Long lines at peak lunch/dinner</td></tr>
-            <tr><td>Monkeypod Kitchen<a class="map-link" href="https://maps.google.com/?q=Monkeypod+Kitchen+Waikiki+Honolulu" target="_blank">↗</a></td><td>Mai Tai, truffle fries, pizza — great for groups</td><td>Reservations recommended for dinner</td></tr>
-            <tr><td>Duke's Waikiki<a class="map-link" href="https://maps.google.com/?q=Duke%27s+Waikiki+Honolulu" target="_blank">↗</a></td><td>Hula pie, cocktails, beachfront dining</td><td>Very busy at sunset</td></tr>
-            <tr><td>Poke Fix Hawaii<a class="map-link" href="https://maps.google.com/?q=Poke+Fix+Hawaii+Waikiki" target="_blank">↗</a></td><td>Fresh poke bowls, customizable</td><td>Casual, hours may vary</td></tr>
-            <tr><td>Poké Bar Waikiki<a class="map-link" href="https://maps.google.com/?q=Poke+Bar+Waikiki+Honolulu" target="_blank">↗</a></td><td>Quick poke bowls, convenient</td><td>Standard daytime hours</td></tr>
-            <tr><td>Poke Waikiki<a class="map-link" href="https://maps.google.com/?q=Poke+Waikiki+Honolulu" target="_blank">↗</a></td><td>Grab-and-go poke</td><td>Limited seating</td></tr>
-            <tr><td>Ohana Hui Cafe<a class="map-link" href="https://maps.google.com/?q=Ohana+Hui+Cafe+Honolulu" target="_blank">↗</a></td><td>Matcha drinks, soft serve, Japanese-style desserts</td><td>Limited hours, check daily schedule</td></tr>
-            <tr><td>Onigiri Onibe<a class="map-link" href="https://maps.google.com/?q=Onigiri+Onibe+Honolulu" target="_blank">↗</a></td><td>Japanese rice balls (onigiri), great quick snack</td><td>Often sells out early</td></tr>
-          </tbody>
+          <thead><tr><th>Place</th><th>What to Get</th><th>Notes</th></tr></thead>
+          <tbody id="food-walkable-rows"></tbody>
         </table>
       </div>
     </div>
-
-    <div class="accordion">
+    <div id="food-trip-acc" class="accordion" style="display:none">
       <button class="accordion-btn" onclick="toggleAcc(this)">
         <span><span class="accordion-icon">✨</span>Worth the Trip</span>
         <span class="accordion-chevron">▼</span>
       </button>
       <div class="accordion-body">
         <table class="rec-table">
-          <thead><tr><th>Place</th><th>What to Get</th><th>Hours / Notes</th></tr></thead>
-          <tbody>
-            <tr><td>Tamura's Fine Wine &amp; Liquors Waialae<a class="map-link" href="https://maps.google.com/?q=Tamura%27s+Fine+Wine+Liquors+Waialae+Honolulu" target="_blank">↗</a></td><td>Poke</td><td>Takeout only vibe, go earlier for best selection</td></tr>
-            <tr><td>The Pig and the Lady<a class="map-link" href="https://maps.google.com/?q=The+Pig+and+the+Lady+Honolulu" target="_blank">↗</a></td><td>Pho French dip, garlic noodles, shaking beef</td><td>Closed Mondays, reservations recommended</td></tr>
-            <tr><td>Ono Seafood<a class="map-link" href="https://maps.google.com/?q=Ono+Seafood+Honolulu" target="_blank">↗</a></td><td>Classic ahi poke, spicy ahi</td><td>Closed Sundays, takeout only</td></tr>
-            <tr><td>Westman Cafe<a class="map-link" href="https://maps.google.com/?q=Westman+Cafe+Honolulu" target="_blank">↗</a></td><td>Brunch (ricotta pancakes, eggs)</td><td>Popular brunch spot, expect waits</td></tr>
-            <tr><td>Gyoza Studio Kobuta<a class="map-link" href="https://maps.google.com/?q=Gyoza+Studio+Kobuta+Honolulu" target="_blank">↗</a></td><td>Crispy gyoza, Japanese comfort food</td><td>Small spot, limited seating</td></tr>
-            <tr><td>Kansai Yamato Cafe<a class="map-link" href="https://maps.google.com/?q=Kansai+Yamato+Cafe+Honolulu" target="_blank">↗</a></td><td>Mochi with fresh fruit, Japanese desserts</td><td>Limited quantities daily</td></tr>
-            <tr><td>Asato Family Shop<a class="map-link" href="https://maps.google.com/?q=Asato+Family+Shop+Honolulu" target="_blank">↗</a></td><td>Local-style ice cream &amp; sorbet</td><td>Old-school shop, check hours</td></tr>
-            <tr><td>Ice Garden<a class="map-link" href="https://maps.google.com/?q=Ice+Garden+Honolulu" target="_blank">↗</a></td><td>Shave ice, local-style desserts</td><td>Hours vary, best in afternoon/evening</td></tr>
-          </tbody>
+          <thead><tr><th>Place</th><th>What to Get</th><th>Notes</th></tr></thead>
+          <tbody id="food-trip-rows"></tbody>
         </table>
       </div>
     </div>
-
+    <div id="food-loading" class="loading-row"><div class="spinner"></div>Loading from Google Sheet…</div>
   </div>
 </div>
 
@@ -400,46 +378,31 @@ footer a{color:rgba(255,255,255,0.45);}
   <div class="si">
     <h2 class="sec-title">Activities &amp; Recommendations</h2>
     <p class="sec-sub">Our favourite things to do in Honolulu — expand each section to explore</p>
-
-    <div class="accordion">
+    <div id="act-walkable-acc" class="accordion" style="display:none">
       <button class="accordion-btn" onclick="toggleAcc(this)">
         <span><span class="accordion-icon">🌴</span>Right Outside — walkable from the hotel</span>
         <span class="accordion-chevron">▼</span>
       </button>
       <div class="accordion-body">
         <table class="rec-table">
-          <thead><tr><th>Place</th><th>What to Do</th><th>Hours / Notes</th></tr></thead>
-          <tbody>
-            <tr><td>Waikiki Beach<a class="map-link" href="https://maps.google.com/?q=Waikiki+Beach+Honolulu" target="_blank">↗</a></td><td>Swim, surf, sunset views</td><td>Always open, crowded midday</td></tr>
-            <tr><td>Kapiolani Park<a class="map-link" href="https://maps.google.com/?q=Kapiolani+Park+Honolulu" target="_blank">↗</a></td><td>Morning walk, picnic, chill time</td><td>Open daily, great sunrise spot</td></tr>
-            <tr><td>International Market Place<a class="map-link" href="https://maps.google.com/?q=International+Market+Place+Waikiki+Honolulu" target="_blank">↗</a></td><td>Shopping, casual dining</td><td>Open daily, varies by store</td></tr>
-            <tr><td>Diamond Head State Monument<a class="map-link" href="https://maps.google.com/?q=Diamond+Head+State+Monument+Honolulu" target="_blank">↗</a></td><td>Iconic hike, panoramic views</td><td>Reservation required, go early (hot + limited entry)</td></tr>
-          </tbody>
+          <thead><tr><th>Place</th><th>What to Do</th><th>Notes</th></tr></thead>
+          <tbody id="act-walkable-rows"></tbody>
         </table>
       </div>
     </div>
-
-    <div class="accordion">
+    <div id="act-out-acc" class="accordion" style="display:none">
       <button class="accordion-btn" onclick="toggleAcc(this)">
         <span><span class="accordion-icon">🌅</span>Day Out — a little further, totally worth it</span>
         <span class="accordion-chevron">▼</span>
       </button>
       <div class="accordion-body">
         <table class="rec-table">
-          <thead><tr><th>Place</th><th>What to Do</th><th>Hours / Notes</th></tr></thead>
-          <tbody>
-            <tr><td>Hanauma Bay<a class="map-link" href="https://maps.google.com/?q=Hanauma+Bay+Nature+Preserve+Honolulu" target="_blank">↗</a></td><td>Snorkeling, clear water, marine life</td><td>Reservations required, closed Mon/Tue</td></tr>
-            <tr><td>Pearl Harbor National Memorial<a class="map-link" href="https://maps.google.com/?q=Pearl+Harbor+National+Memorial+Hawaii" target="_blank">↗</a></td><td>Historic WWII site</td><td>Timed entry tickets recommended</td></tr>
-            <tr><td>North Shore Oahu<a class="map-link" href="https://maps.google.com/?q=North+Shore+Oahu+Hawaii" target="_blank">↗</a></td><td>Shrimp trucks, beaches, surfing</td><td>Full-day trip recommended</td></tr>
-            <tr><td>Lanikai Beach<a class="map-link" href="https://maps.google.com/?q=Lanikai+Beach+Kailua+Hawaii" target="_blank">↗</a></td><td>Beautiful turquoise water, soft sand</td><td>Limited parking, go early</td></tr>
-            <tr><td>Ala Moana Center<a class="map-link" href="https://maps.google.com/?q=Ala+Moana+Center+Honolulu" target="_blank">↗</a></td><td>Shopping + food</td><td>Open daily</td></tr>
-            <tr><td>Catamaran Sunset Cruise<a class="map-link" href="https://maps.google.com/?q=catamaran+sunset+cruise+Waikiki+Honolulu" target="_blank">↗</a></td><td>Sunset sailing experience</td><td>Book ahead, weather dependent</td></tr>
-            <tr><td>Surf Lessons Waikiki<a class="map-link" href="https://maps.google.com/?q=surf+lessons+Waikiki+Beach+Honolulu" target="_blank">↗</a></td><td>Beginner-friendly surfing</td><td>Book in advance or same-day</td></tr>
-          </tbody>
+          <thead><tr><th>Place</th><th>What to Do</th><th>Notes</th></tr></thead>
+          <tbody id="act-out-rows"></tbody>
         </table>
       </div>
     </div>
-
+    <div id="act-loading" class="loading-row"><div class="spinner"></div>Loading from Google Sheet…</div>
   </div>
 </div>
 
@@ -461,6 +424,8 @@ function checkPw() {
     document.getElementById('site').style.display = 'block';
     sessionStorage.setItem('hw_auth','1');
     initCalendar();
+    initFood();
+    initActivities();
   } else {
     const e = document.getElementById('gate-error');
     e.textContent = 'Incorrect — try again!';
@@ -648,6 +613,98 @@ function setSyncStatus(text, live) {
   document.getElementById('guest-sync-dot').className = 'sync-dot' + (live ? ' live' : '');
 }
 
+// ── FOOD & ACTIVITIES FROM SHEETS ────────────────────────────
+// Sheet structure (from screenshots):
+// Row 1: section header e.g. "🚶 WALKABLE (from Queen Kapiolani Hotel)"
+// Row 2: column headers "Place | What to Get / Recommendation | Notes"
+// Rows 3+: data rows
+// Then a blank row, then another section header, then more data
+
+function mapsLink(place) {
+  const q = encodeURIComponent(place + ' Honolulu Hawaii');
+  return `<a class="map-link" href="https://maps.google.com/?q=${q}" target="_blank">↗</a>`;
+}
+
+function rowHtml(cells) {
+  const place = cells[0] || '';
+  const rec   = cells[1] || '';
+  const notes = cells[2] || '';
+  if (!place) return '';
+  return `<tr>
+    <td>${place}${mapsLink(place)}</td>
+    <td>${rec}</td>
+    <td>${notes}</td>
+  </tr>`;
+}
+
+function populateSheet(data, walkableBodyId, tripBodyId, walkableAccId, tripAccId, loadingId) {
+  const rows = data?.table?.rows || [];
+  const walkable = [], trip = [];
+
+  // The JSONP API skips merged header rows entirely.
+  // Strategy: first non-header data rows = walkable section.
+  // When we hit a row where col A has content but col B is empty
+  // AFTER we've already collected walkable rows, that's the section break.
+  let inWalkable = true;
+  let hasData = false;
+
+  for (const r of rows) {
+    const cells = (r.c || []).map(c => c ? String(c.f ?? c.v ?? '').trim() : '');
+    const a = cells[0] || '';
+    const b = cells[1] || '';
+    const c = cells[2] || '';
+
+    if (!a) continue;
+
+    // Skip column header rows
+    if (/^place$/i.test(a) || /what to/i.test(b)) continue;
+
+    // If col B is empty after we have data, this is a section-break label row
+    if (!b && !c && hasData) {
+      inWalkable = false;
+      continue;
+    }
+
+    // Skip any other label-only row before data starts
+    if (!b && !c && !hasData) continue;
+
+    hasData = true;
+    if (inWalkable) walkable.push(cells);
+    else trip.push(cells);
+  }
+
+  console.log('[Sheet parsed]', walkableBodyId, '→ walkable:', walkable.length, 'trip:', trip.length);
+
+  document.getElementById(walkableBodyId).innerHTML = walkable.map(rowHtml).join('');
+  document.getElementById(tripBodyId).innerHTML     = trip.map(rowHtml).join('');
+  document.getElementById(walkableAccId).style.display = walkable.length ? '' : 'none';
+  document.getElementById(tripAccId).style.display     = trip.length     ? '' : 'none';
+  document.getElementById(loadingId).style.display = 'none';
+}
+
+async function initFood() {
+  try {
+    const data = await jsonpQuery(966206002);
+    // Log raw rows for debugging
+    console.log('[Food raw]', JSON.stringify((data?.table?.rows||[]).slice(0,5)));
+    populateSheet(data, 'food-walkable-rows', 'food-trip-rows', 'food-walkable-acc', 'food-trip-acc', 'food-loading');
+  } catch(e) {
+    console.warn('Food sheet failed:', e);
+    document.getElementById('food-loading').innerHTML = 'Could not load food data — <a href="https://docs.google.com/spreadsheets/d/' + SHEET_ID + '/edit" target="_blank">open sheet</a>';
+  }
+}
+
+async function initActivities() {
+  try {
+    const data = await jsonpQuery(1224575998);
+    console.log('[Activities raw]', JSON.stringify((data?.table?.rows||[]).slice(0,5)));
+    populateSheet(data, 'act-walkable-rows', 'act-out-rows', 'act-walkable-acc', 'act-out-acc', 'act-loading');
+  } catch(e) {
+    console.warn('Activities sheet failed:', e);
+    document.getElementById('act-loading').innerHTML = 'Could not load activities — <a href="https://docs.google.com/spreadsheets/d/' + SHEET_ID + '/edit" target="_blank">open sheet</a>';
+  }
+}
+
 // ── MAIN INIT ─────────────────────────────────────────────────
 async function initCalendar() {
   setSyncStatus('Loading from sheet…', false);
@@ -696,7 +753,11 @@ async function initCalendar() {
   }
 }
 
-if (sessionStorage.getItem('hw_auth') === '1') initCalendar();
+if (sessionStorage.getItem('hw_auth') === '1') {
+  initCalendar();
+  initFood();
+  initActivities();
+}
 </script>
 </body>
 </html>
