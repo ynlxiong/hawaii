@@ -31,54 +31,60 @@ a{color:var(--ocean);}
 #site{display:none;}
 
 /* ── NAV ── */
-nav{position:sticky;top:0;z-index:100;background:rgba(245,237,216,0.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--sand-dark);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:60px;}
-.nav-brand{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:300;font-style:italic;color:var(--ocean-deep);}
-.nav-links{display:flex;gap:1.4rem;list-style:none;}
-.nav-links a{font-size:0.79rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-mid);text-decoration:none;transition:color 0.2s;}
-.nav-links a:hover{color:var(--ocean);}
-
-/* ── HERO ── */
-/* The hero background continues seamlessly into the sand section below */
-.hero-and-cel{
-  background:linear-gradient(155deg,var(--ocean-deep) 0%,var(--ocean) 55%,#3AA8C8 100%);
-  position:relative;
+nav{
+  position:sticky;top:0;z-index:100;
+  background:rgba(245,237,216,0.96);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--sand-dark);
+  padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:60px;
 }
+.nav-brand{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:300;font-style:italic;color:var(--ocean-deep);}
+.nav-links{display:flex;gap:0.7rem;list-style:none;align-items:center;}
+
+/* Primary CTA — The Celebration */
+.nav-links .nav-primary{
+  background:var(--ocean-deep);
+  color:white;
+  border-radius:8px;
+  padding:0.38rem 0.9rem;
+  font-size:0.79rem;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;
+  text-decoration:none;transition:background 0.18s;white-space:nowrap;
+}
+.nav-links .nav-primary:hover{background:var(--ocean);}
+
+/* Secondary links */
+.nav-links .nav-secondary{
+  font-size:0.75rem;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;
+  color:var(--text-light);text-decoration:none;padding:0.38rem 0.5rem;
+  border-radius:6px;transition:color 0.18s;white-space:nowrap;
+}
+.nav-links .nav-secondary:hover{color:var(--ocean-deep);}
+
+/* ── HERO + CELEBRATION wrapper ── */
+.hero-and-cel{background:linear-gradient(155deg,var(--ocean-deep) 0%,var(--ocean) 55%,#3AA8C8 100%);position:relative;}
 .hero{text-align:center;padding:5.5rem 2rem 0;color:white;position:relative;z-index:2;}
 .hero-eyebrow{font-size:0.75rem;letter-spacing:0.22em;text-transform:uppercase;opacity:0.6;margin-bottom:1rem;}
 .hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,7vw,5.5rem);font-weight:300;line-height:1.05;margin-bottom:0.5rem;}
 .hero-title em{font-style:italic;color:#B8E0ED;}
 .hero-sub{font-size:0.95rem;opacity:0.7;font-weight:300;padding-bottom:3rem;}
 
-/* ── THE CELEBRATION — sand island that arcs up from the ocean bg ── */
-/* The sand shape sits INSIDE .hero-and-cel, appearing to float on the ocean */
+/* Sand island */
 .cel-island{
   position:relative;z-index:2;
-  /* Rounded top — arcs up from the ocean */
   background:var(--sand);
   border-radius:48px 48px 0 0;
-  margin:0 0 0;
   padding:3.5rem 2rem 4rem;
-  /* Rounded bottom cutout into white below */
 }
-/* The white page background arcs up into the bottom of the sand island */
 .cel-island::after{
-  content:'';
-  position:absolute;
-  bottom:-48px;
-  left:0;right:0;
-  height:48px;
-  background:var(--white);
-  border-radius:48px 48px 0 0;
-  z-index:3;
+  content:'';position:absolute;bottom:-48px;left:0;right:0;
+  height:48px;background:var(--white);border-radius:48px 48px 0 0;z-index:3;
 }
-
 .cel-inner{max-width:1080px;margin:0 auto;position:relative;z-index:2;}
 .cel-sec-title{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:var(--ocean-deep);margin-bottom:0.35rem;}
 .cel-sec-sub{font-size:0.86rem;color:var(--text-mid);margin-bottom:2rem;}
 .cel-divider{width:44px;height:2px;background:var(--gold);margin:0.5rem 0 1.8rem;}
 .cel-grid{display:grid;gap:1.2rem;}
 
-/* ── CONTENT CARDS (on sand) ── */
+/* Cards on sand */
 .sand-card{background:rgba(255,253,248,0.9);border:1px solid var(--sand-dark);border-radius:16px;overflow:hidden;box-shadow:0 2px 12px rgba(42,37,32,0.06);}
 .ev-header{background:var(--ocean-deep);padding:0.85rem 1.4rem;display:flex;align-items:center;justify-content:space-between;}
 .ev-day{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:300;font-style:italic;color:white;}
@@ -101,13 +107,24 @@ nav{position:sticky;top:0;z-index:100;background:rgba(245,237,216,0.96);backdrop
 .dress-who{font-size:0.69rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-light);margin-bottom:3px;}
 .dress-what{font-size:0.83rem;color:var(--text-dark);}
 
-/* ── WHITE SECTIONS (after sand) ── */
+/* ── WHITE SECTIONS ── */
 .white-section{background:var(--white);padding:3.5rem 2rem;}
-.white-section + .white-section{border-top:1px solid var(--sand-dark);}
+.white-section+.white-section{border-top:1px solid var(--sand-dark);}
 .si{max-width:1080px;margin:0 auto;}
 .sec-title{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:var(--ocean-deep);margin-bottom:0.35rem;}
-.sec-sub{font-size:0.86rem;color:var(--text-light);margin-bottom:2rem;line-height:1.6;}
+.sec-sub{font-size:0.86rem;color:var(--text-light);margin-bottom:1rem;line-height:1.6;}
 .divider{width:44px;height:2px;background:var(--gold);margin:0.5rem 0 1.8rem;}
+
+/* Sync status badge */
+.sync-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:0.72rem;color:var(--text-light);
+  background:var(--sand);border:1px solid var(--sand-dark);
+  border-radius:100px;padding:3px 10px;margin-bottom:1.6rem;
+}
+.sync-dot{width:6px;height:6px;border-radius:50%;background:var(--sand-dark);flex-shrink:0;}
+.sync-dot.live{background:#52A07A;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.4;}}
 
 /* ── TRAVEL CALENDAR ── */
 .cal-outer{background:var(--white);border-radius:14px;border:1px solid var(--sand-dark);overflow:hidden;}
@@ -126,8 +143,8 @@ nav{position:sticky;top:0;z-index:100;background:rgba(245,237,216,0.96);backdrop
 .cal-cell{flex:1;height:22px;margin:0 1.5px;border-radius:3px;position:relative;cursor:default;}
 .cal-cell.here{background:var(--ocean);opacity:0.72;}
 .cal-cell.event{background:var(--hibiscus)!important;opacity:1;}
-.cal-cell .tip{position:absolute;bottom:130%;left:50%;transform:translateX(-50%);background:var(--text-dark);color:white;font-size:0.7rem;padding:3px 7px;border-radius:5px;white-space:nowrap;opacity:0;transition:opacity .15s;pointer-events:none;z-index:20;}
-.cal-cell:hover .tip{opacity:1;}
+/* host row name style */
+.cal-poc-host{font-size:0.92rem;font-weight:500;color:var(--ocean-deep);}
 .cal-legend{display:flex;gap:1.2rem;padding:0.75rem 1rem;border-top:1px solid var(--sand-dark);background:var(--sand);flex-wrap:wrap;}
 .leg{display:flex;align-items:center;gap:6px;font-size:0.74rem;color:var(--text-light);}
 .leg-sq{width:14px;height:14px;border-radius:3px;}
@@ -141,31 +158,55 @@ nav{position:sticky;top:0;z-index:100;background:rgba(245,237,216,0.96);backdrop
 .wa-text p{font-size:0.81rem;color:rgba(255,255,255,0.68);line-height:1.5;}
 .wa-btn{display:inline-flex;align-items:center;gap:6px;background:white;color:#065147;border-radius:8px;padding:0.55rem 1.1rem;font-size:0.84rem;font-weight:500;text-decoration:none;white-space:nowrap;flex-shrink:0;}
 
-/* ── ACCORDION / DROPDOWN ── */
+/* ── ACCORDION ── */
 .accordion{border:1px solid var(--sand-dark);border-radius:14px;overflow:hidden;margin-bottom:1rem;}
-.accordion-btn{width:100%;background:var(--white);border:none;padding:1.1rem 1.4rem;display:flex;align-items:center;justify-content:space-between;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:0.95rem;font-weight:500;color:var(--ocean-deep);text-align:left;}
+.accordion-btn{
+  width:100%;background:var(--white);border:none;
+  padding:1.1rem 1.4rem;
+  display:flex;align-items:center;justify-content:space-between;
+  cursor:pointer;font-family:'DM Sans',sans-serif;font-size:0.95rem;font-weight:500;
+  color:var(--ocean-deep);text-align:left;
+}
 .accordion-btn:hover{background:var(--sand);}
-.accordion-chevron{font-size:0.8rem;color:var(--text-light);transition:transform 0.22s;flex-shrink:0;}
+.accordion-icon{font-size:1rem;margin-right:0.5rem;}
+.accordion-chevron{font-size:0.75rem;color:var(--text-light);transition:transform 0.22s;flex-shrink:0;margin-left:0.5rem;}
 .accordion-btn.open .accordion-chevron{transform:rotate(180deg);}
-.accordion-body{display:none;border-top:1px solid var(--sand-dark);background:var(--white);}
+.accordion-body{display:none;border-top:1px solid var(--sand-dark);}
 .accordion-body.open{display:block;}
 
-/* ── ACTIVITY TABLES ── */
-.act-section-label{font-size:0.72rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);padding:1rem 1.4rem 0.4rem;}
-.act-table{width:100%;border-collapse:collapse;}
-.act-table th{background:var(--sand-mid);padding:0.55rem 1rem;font-size:0.72rem;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;color:var(--text-mid);text-align:left;}
-.act-table td{padding:0.6rem 1rem;font-size:0.83rem;border-bottom:1px solid var(--sand-dark);color:var(--text-dark);vertical-align:top;line-height:1.5;}
-.act-table tr:last-child td{border-bottom:none;}
-.act-table tr:hover td{background:rgba(245,237,216,0.35);}
-.act-transport-header{background:var(--sand);display:flex;align-items:center;gap:8px;padding:0.7rem 1rem;border-top:1px solid var(--sand-dark);border-bottom:1px solid var(--sand-dark);font-size:0.8rem;font-weight:500;color:var(--text-mid);}
+/* ── RECOMMENDATION TABLES ── */
+.rec-table{width:100%;border-collapse:collapse;}
+.rec-table th{
+  background:var(--sand-mid);padding:0.55rem 1rem;
+  font-size:0.72rem;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;
+  color:var(--text-mid);text-align:left;
+}
+.rec-table td{
+  padding:0.65rem 1rem;font-size:0.83rem;
+  border-bottom:1px solid var(--sand-dark);
+  color:var(--text-dark);vertical-align:top;line-height:1.5;
+}
+.rec-table tr:last-child td{border-bottom:none;}
+.rec-table tr:hover td{background:rgba(245,237,216,0.35);}
+.rec-table td:first-child{font-weight:500;}
+.rec-table td .note{font-size:0.75rem;color:var(--text-light);display:block;margin-top:2px;}
+.map-link{display:inline-flex;align-items:center;color:var(--ocean);text-decoration:none;font-size:0.72rem;font-weight:400;margin-left:4px;opacity:0.65;transition:opacity 0.15s;vertical-align:middle;}
+.map-link:hover{opacity:1;}
 
-/* ── FOOD TABLE ── */
-.food-table{width:100%;border-collapse:collapse;}
-.food-table th{background:var(--sand-mid);padding:0.55rem 1rem;font-size:0.72rem;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;color:var(--text-mid);text-align:left;}
-.food-table td{padding:0.6rem 1rem;font-size:0.83rem;border-bottom:1px solid var(--sand-dark);color:var(--text-dark);vertical-align:top;line-height:1.5;}
-.food-table tr:last-child td{border-bottom:none;}
-.food-table tr:hover td{background:rgba(245,237,216,0.35);}
-.food-note{font-size:0.78rem;color:var(--text-light);padding:0.8rem 1.4rem;border-top:1px solid var(--sand-dark);line-height:1.6;}
+/* transport sub-header inside accordion */
+.rec-sub-header{
+  display:flex;align-items:center;gap:8px;
+  background:var(--sand);padding:0.65rem 1rem;
+  border-bottom:1px solid var(--sand-dark);
+  font-size:0.78rem;font-weight:500;color:var(--text-mid);
+}
+
+/* loading / error states */
+.loading-row{display:flex;align-items:center;gap:10px;color:var(--text-light);font-size:0.85rem;padding:1.5rem;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.spinner{width:15px;height:15px;border:2px solid var(--sand-dark);border-top-color:var(--ocean);border-radius:50%;animation:spin .75s linear infinite;flex-shrink:0;}
+.sheet-err{background:#FFF8EF;border:1px solid #EDD8B0;border-radius:0 0 14px 14px;padding:1.2rem 1.4rem;font-size:0.84rem;line-height:1.75;color:var(--text-mid);}
+.sheet-err strong{display:block;color:var(--ocean-deep);margin-bottom:0.3rem;}
 
 /* TOAST */
 .toast{position:fixed;bottom:1.8rem;right:1.8rem;background:var(--palm);color:white;padding:0.75rem 1.3rem;border-radius:9px;font-size:0.85rem;font-weight:500;z-index:1000;transform:translateY(110px);opacity:0;transition:all .28s;}
@@ -176,9 +217,9 @@ footer a{color:rgba(255,255,255,0.42);}
 
 @media(max-width:700px){
   .dress-grid{grid-template-columns:1fr;}
-  .nav-links{display:none;}
+  .nav-links .nav-secondary{display:none;}
   .wa-wrap{flex-direction:column;text-align:center;}
-  .cal-name-th,.cal-name-td{width:100px;}
+  .cal-name-th,.cal-name-td{width:95px;}
   .cel-island{border-radius:28px 28px 0 0;}
 }
 </style>
@@ -199,32 +240,32 @@ footer a{color:rgba(255,255,255,0.42);}
 
 <div id="site">
 
+<!-- NAV — primary CTA + secondary links -->
 <nav>
   <div class="nav-brand">Aloha & I Do ✦ Hawaii</div>
   <ul class="nav-links">
-    <li><a href="#event">The Celebration</a></li>
-    <li><a href="#guests">Who's Coming</a></li>
-    <li><a href="#food">Food</a></li>
-    <li><a href="#activities">Activities</a></li>
+    <li><a class="nav-primary" href="#event">The Celebration ✦</a></li>
+    <li><a class="nav-secondary" href="#guests">Who's Coming</a></li>
+    <li><a class="nav-secondary" href="#food">Food</a></li>
+    <li><a class="nav-secondary" href="#activities">Activities</a></li>
   </ul>
 </nav>
 
-<!-- HERO + CELEBRATION — one connected background -->
+<!-- HERO + CELEBRATION — seamless ocean → sand -->
 <div class="hero-and-cel">
-  <div class="hero" id="event-anchor">
+  <div class="hero">
     <p class="hero-eyebrow">You're invited to celebrate with us</p>
     <h1 class="hero-title">Aloha &amp; <em>I Do</em></h1>
     <p class="hero-sub">A wedding celebration in Hawaii</p>
   </div>
-
-  <!-- Sand island floats up from the ocean gradient -->
   <div class="cel-island" id="event">
     <div class="cel-inner">
       <h2 class="cel-sec-title">The Celebration</h2>
       <p class="cel-sec-sub">Everything you need to know about the day</p>
       <div class="cel-divider"></div>
-
       <div class="cel-grid">
+
+        <!-- Event card -->
         <div class="sand-card">
           <div class="ev-header">
             <span class="ev-day">Friday, June 27</span>
@@ -236,13 +277,14 @@ footer a{color:rgba(255,255,255,0.42);}
               <div class="ev-dot" style="background:#C94B6A"></div>
               <div class="ev-info">
                 <div class="ev-name">Wedding Celebration Brunch</div>
-                <div class="ev-detail">Come hungry, come happy — we're celebrating! Details to follow.</div>
+                <div class="ev-detail">Come hungry, come happy — we're celebrating! More details to follow.</div>
               </div>
               <span class="ev-badge">All guests</span>
             </div>
           </div>
         </div>
 
+        <!-- Dress code card -->
         <div class="sand-card">
           <div class="dress-grid">
             <div>
@@ -267,66 +309,87 @@ footer a{color:rgba(255,255,255,0.42);}
             </div>
           </div>
         </div>
+
       </div>
     </div>
   </div>
 </div>
 
-<!-- WHO'S COMING — travel calendar only, back on white -->
+<!-- WHO'S COMING -->
 <div class="white-section" id="guests" style="padding-top:5rem;">
   <div class="si">
     <h2 class="sec-title">Who's Coming</h2>
-    <p class="sec-sub">Everyone's Hawaii dates at a glance. <span style="color:var(--hibiscus);font-weight:500;">Pink = June 27 brunch.</span> Update your dates in the <a href="https://docs.google.com/spreadsheets/d/1zSEKiMWck87hSToY6_syvAi8UcQdCLfvg62L2jbp5Gc/edit" target="_blank">Google Sheet</a> and reload — the calendar refreshes automatically.</p>
+    <p class="sec-sub">Everyone's Hawaii dates at a glance. <span style="color:var(--hibiscus);font-weight:500;">Pink = June 27 brunch.</span></p>
     <div style="display:flex;align-items:center;gap:10px;margin-bottom:1.8rem;flex-wrap:wrap;">
-      <div class="divider" style="margin:0;"></div>
-      <a class="sheet-link" href="https://docs.google.com/spreadsheets/d/1zSEKiMWck87hSToY6_syvAi8UcQdCLfvg62L2jbp5Gc/edit" target="_blank">✏️ Update your travel dates</a>
+      <div class="divider" style="margin:0;flex-shrink:0;"></div>
+      <span class="sync-badge" id="guest-sync-badge"><span class="sync-dot" id="guest-sync-dot"></span><span id="guest-sync-text">Loading from sheet…</span></span>
+      <a class="sheet-link" href="https://docs.google.com/spreadsheets/d/1zSEKiMWck87hSToY6_syvAi8UcQdCLfvg62L2jbp5Gc/edit" target="_blank">✏️ Update your dates</a>
     </div>
 
     <div class="cal-outer" id="cal-outer">
-      <div style="display:flex;align-items:center;gap:10px;color:var(--text-light);font-size:0.86rem;padding:1.5rem 1rem;">
-        <div style="width:16px;height:16px;border:2px solid var(--sand-dark);border-top-color:var(--ocean);border-radius:50%;animation:spin .75s linear infinite;flex-shrink:0;"></div>
-        Building calendar…
-      </div>
+      <div class="loading-row"><div class="spinner"></div>Building calendar…</div>
     </div>
-    <style>@keyframes spin{to{transform:rotate(360deg);}}</style>
 
-    <!-- WhatsApp -->
     <div class="wa-wrap">
       <div class="wa-icon">💬</div>
       <div class="wa-text">
         <h3>We have a group WhatsApp!</h3>
-        <p>Use it to coordinate plans, share updates, and stay in touch with everyone in real time.</p>
+        <p>Contact Diana to get added to the group chat — we'll use it to coordinate plans and share updates in real time.</p>
       </div>
-      <!-- ✏️ Replace href with your actual WhatsApp group invite link -->
-      <a class="wa-btn" href="https://chat.whatsapp.com/REPLACE_WITH_YOUR_LINK" target="_blank">Join the Group →</a>
     </div>
   </div>
 </div>
 
-<!-- FOOD -->
+<!-- FOOD & DRINK -->
 <div class="white-section" id="food">
   <div class="si">
     <h2 class="sec-title">Food &amp; Drink</h2>
-    <p class="sec-sub">The brunch menu — expand to view</p>
+    <p class="sec-sub">Our favourite places to eat and drink in Honolulu — expand each section</p>
     <div class="divider"></div>
 
     <div class="accordion">
-      <button class="accordion-btn" onclick="toggleAccordion(this)">
-        🍽️ Brunch Menu
+      <button class="accordion-btn" onclick="toggleAcc(this)">
+        <span><span class="accordion-icon">🌴</span>Easy Eats — steps from the hotel</span>
         <span class="accordion-chevron">▼</span>
       </button>
       <div class="accordion-body">
-        <p class="food-note">Menu details coming soon — check back closer to the date!</p>
+        <table class="rec-table">
+          <thead><tr><th>Place</th><th>What to Get</th><th>Hours / Notes</th></tr></thead>
+          <tbody>
+            <tr><td>Da Cove Health Bar &amp; Cafe<a class="map-link" href="https://maps.google.com/?q=Da+Cove+Health+Bar+Cafe+Honolulu" target="_blank">↗</a></td><td>Acai bowls, smoothies — perfect post-beach stop</td><td>Closed Sundays, limited hours (morning–afternoon)</td></tr>
+            <tr><td>Henry's Place<a class="map-link" href="https://maps.google.com/?q=Henry%27s+Place+Honolulu+sorbet" target="_blank">↗</a></td><td>Homemade sorbet (mango, coconut, lilikoi)</td><td>Cash only, often sells out early</td></tr>
+            <tr><td>Marugame Udon<a class="map-link" href="https://maps.google.com/?q=Marugame+Udon+Waikiki+Honolulu" target="_blank">↗</a></td><td>Fresh udon + tempura (great value)</td><td>Long lines at peak lunch/dinner</td></tr>
+            <tr><td>Monkeypod Kitchen<a class="map-link" href="https://maps.google.com/?q=Monkeypod+Kitchen+Waikiki+Honolulu" target="_blank">↗</a></td><td>Mai Tai, truffle fries, pizza — great for groups</td><td>Reservations recommended for dinner</td></tr>
+            <tr><td>Duke's Waikiki<a class="map-link" href="https://maps.google.com/?q=Duke%27s+Waikiki+Honolulu" target="_blank">↗</a></td><td>Hula pie, cocktails, beachfront dining</td><td>Very busy at sunset</td></tr>
+            <tr><td>Poke Fix Hawaii<a class="map-link" href="https://maps.google.com/?q=Poke+Fix+Hawaii+Waikiki" target="_blank">↗</a></td><td>Fresh poke bowls, customizable</td><td>Casual, hours may vary</td></tr>
+            <tr><td>Poké Bar Waikiki<a class="map-link" href="https://maps.google.com/?q=Poke+Bar+Waikiki+Honolulu" target="_blank">↗</a></td><td>Quick poke bowls, convenient</td><td>Standard daytime hours</td></tr>
+            <tr><td>Poke Waikiki<a class="map-link" href="https://maps.google.com/?q=Poke+Waikiki+Honolulu" target="_blank">↗</a></td><td>Grab-and-go poke</td><td>Limited seating</td></tr>
+            <tr><td>Ohana Hui Cafe<a class="map-link" href="https://maps.google.com/?q=Ohana+Hui+Cafe+Honolulu" target="_blank">↗</a></td><td>Matcha drinks, soft serve, Japanese-style desserts</td><td>Limited hours, check daily schedule</td></tr>
+            <tr><td>Onigiri Onibe<a class="map-link" href="https://maps.google.com/?q=Onigiri+Onibe+Honolulu" target="_blank">↗</a></td><td>Japanese rice balls (onigiri), great quick snack</td><td>Often sells out early</td></tr>
+          </tbody>
+        </table>
       </div>
     </div>
 
     <div class="accordion">
-      <button class="accordion-btn" onclick="toggleAccordion(this)">
-        🍹 Drinks
+      <button class="accordion-btn" onclick="toggleAcc(this)">
+        <span><span class="accordion-icon">✨</span>Worth the Trip</span>
         <span class="accordion-chevron">▼</span>
       </button>
       <div class="accordion-body">
-        <p class="food-note">Details coming soon!</p>
+        <table class="rec-table">
+          <thead><tr><th>Place</th><th>What to Get</th><th>Hours / Notes</th></tr></thead>
+          <tbody>
+            <tr><td>Tamura's Fine Wine &amp; Liquors Waialae<a class="map-link" href="https://maps.google.com/?q=Tamura%27s+Fine+Wine+Liquors+Waialae+Honolulu" target="_blank">↗</a></td><td>Poke</td><td>Takeout only vibe, go earlier for best selection</td></tr>
+            <tr><td>The Pig and the Lady<a class="map-link" href="https://maps.google.com/?q=The+Pig+and+the+Lady+Honolulu" target="_blank">↗</a></td><td>Pho French dip, garlic noodles, shaking beef</td><td>Closed Mondays, reservations recommended</td></tr>
+            <tr><td>Ono Seafood<a class="map-link" href="https://maps.google.com/?q=Ono+Seafood+Honolulu" target="_blank">↗</a></td><td>Classic ahi poke, spicy ahi</td><td>Closed Sundays, takeout only</td></tr>
+            <tr><td>Westman Cafe<a class="map-link" href="https://maps.google.com/?q=Westman+Cafe+Honolulu" target="_blank">↗</a></td><td>Brunch (ricotta pancakes, eggs)</td><td>Popular brunch spot, expect waits</td></tr>
+            <tr><td>Gyoza Studio Kobuta<a class="map-link" href="https://maps.google.com/?q=Gyoza+Studio+Kobuta+Honolulu" target="_blank">↗</a></td><td>Crispy gyoza, Japanese comfort food</td><td>Small spot, limited seating</td></tr>
+            <tr><td>Kansai Yamato Cafe<a class="map-link" href="https://maps.google.com/?q=Kansai+Yamato+Cafe+Honolulu" target="_blank">↗</a></td><td>Mochi with fresh fruit, Japanese desserts</td><td>Limited quantities daily</td></tr>
+            <tr><td>Asato Family Shop<a class="map-link" href="https://maps.google.com/?q=Asato+Family+Shop+Honolulu" target="_blank">↗</a></td><td>Local-style ice cream &amp; sorbet</td><td>Old-school shop, check hours</td></tr>
+            <tr><td>Ice Garden<a class="map-link" href="https://maps.google.com/?q=Ice+Garden+Honolulu" target="_blank">↗</a></td><td>Shave ice, local-style desserts</td><td>Hours vary, best in afternoon/evening</td></tr>
+          </tbody>
+        </table>
       </div>
     </div>
 
@@ -340,42 +403,40 @@ footer a{color:rgba(255,255,255,0.42);}
     <p class="sec-sub">Our favourite things to do in Honolulu — expand each section to explore</p>
     <div class="divider"></div>
 
-    <!-- WALKABLE -->
     <div class="accordion">
-      <button class="accordion-btn" onclick="toggleAccordion(this)">
-        🚶 Walkable from Queen Kapiolani Hotel
+      <button class="accordion-btn" onclick="toggleAcc(this)">
+        <span><span class="accordion-icon">🌴</span>Right Outside — walkable from the hotel</span>
         <span class="accordion-chevron">▼</span>
       </button>
       <div class="accordion-body">
-        <table class="act-table">
+        <table class="rec-table">
           <thead><tr><th>Place</th><th>What to Do</th><th>Hours / Notes</th></tr></thead>
           <tbody>
-            <tr><td>Waikiki Beach</td><td>Swim, surf, sunset views</td><td>Always open, crowded midday</td></tr>
-            <tr><td>Kapiolani Park</td><td>Morning walk, picnic, chill time</td><td>Open daily, great sunrise spot</td></tr>
-            <tr><td>International Market Place</td><td>Shopping, casual dining</td><td>Open daily, varies by store</td></tr>
-            <tr><td>Diamond Head State Monument</td><td>Iconic hike, panoramic views</td><td>Reservation required, go early (hot + limited entry)</td></tr>
+            <tr><td>Waikiki Beach<a class="map-link" href="https://maps.google.com/?q=Waikiki+Beach+Honolulu" target="_blank">↗</a></td><td>Swim, surf, sunset views</td><td>Always open, crowded midday</td></tr>
+            <tr><td>Kapiolani Park<a class="map-link" href="https://maps.google.com/?q=Kapiolani+Park+Honolulu" target="_blank">↗</a></td><td>Morning walk, picnic, chill time</td><td>Open daily, great sunrise spot</td></tr>
+            <tr><td>International Market Place<a class="map-link" href="https://maps.google.com/?q=International+Market+Place+Waikiki+Honolulu" target="_blank">↗</a></td><td>Shopping, casual dining</td><td>Open daily, varies by store</td></tr>
+            <tr><td>Diamond Head State Monument<a class="map-link" href="https://maps.google.com/?q=Diamond+Head+State+Monument+Honolulu" target="_blank">↗</a></td><td>Iconic hike, panoramic views</td><td>Reservation required, go early (hot + limited entry)</td></tr>
           </tbody>
         </table>
       </div>
     </div>
 
-    <!-- NEED TRANSPORT -->
     <div class="accordion">
-      <button class="accordion-btn" onclick="toggleAccordion(this)">
-        🚗 Need Transport (Uber / car / bus)
+      <button class="accordion-btn" onclick="toggleAcc(this)">
+        <span><span class="accordion-icon">🌅</span>Day Out — a little further, totally worth it</span>
         <span class="accordion-chevron">▼</span>
       </button>
       <div class="accordion-body">
-        <table class="act-table">
+        <table class="rec-table">
           <thead><tr><th>Place</th><th>What to Do</th><th>Hours / Notes</th></tr></thead>
           <tbody>
-            <tr><td>Hanauma Bay</td><td>Snorkeling, clear water, marine life</td><td>Reservations required, closed Mondays/Tuesdays</td></tr>
-            <tr><td>Pearl Harbor National Memorial</td><td>Historic WWII site</td><td>Timed entry tickets recommended</td></tr>
-            <tr><td>North Shore Oahu</td><td>Shrimp trucks, beaches, surfing</td><td>Full-day trip recommended</td></tr>
-            <tr><td>Lanikai Beach</td><td>Beautiful turquoise water, soft sand</td><td>Limited parking, go early</td></tr>
-            <tr><td>Ala Moana Center</td><td>Shopping + food</td><td>Open daily</td></tr>
-            <tr><td>Catamaran Sunset Cruise</td><td>Sunset sailing experience</td><td>Book ahead, weather dependent</td></tr>
-            <tr><td>Surf Lessons (Waikiki)</td><td>Beginner-friendly surfing</td><td>Book in advance or same-day</td></tr>
+            <tr><td>Hanauma Bay<a class="map-link" href="https://maps.google.com/?q=Hanauma+Bay+Nature+Preserve+Honolulu" target="_blank">↗</a></td><td>Snorkeling, clear water, marine life</td><td>Reservations required, closed Mon/Tue</td></tr>
+            <tr><td>Pearl Harbor National Memorial<a class="map-link" href="https://maps.google.com/?q=Pearl+Harbor+National+Memorial+Hawaii" target="_blank">↗</a></td><td>Historic WWII site</td><td>Timed entry tickets recommended</td></tr>
+            <tr><td>North Shore Oahu<a class="map-link" href="https://maps.google.com/?q=North+Shore+Oahu+Hawaii" target="_blank">↗</a></td><td>Shrimp trucks, beaches, surfing</td><td>Full-day trip recommended</td></tr>
+            <tr><td>Lanikai Beach<a class="map-link" href="https://maps.google.com/?q=Lanikai+Beach+Kailua+Hawaii" target="_blank">↗</a></td><td>Beautiful turquoise water, soft sand</td><td>Limited parking, go early</td></tr>
+            <tr><td>Ala Moana Center<a class="map-link" href="https://maps.google.com/?q=Ala+Moana+Center+Honolulu" target="_blank">↗</a></td><td>Shopping + food</td><td>Open daily</td></tr>
+            <tr><td>Catamaran Sunset Cruise<a class="map-link" href="https://maps.google.com/?q=catamaran+sunset+cruise+Waikiki+Honolulu" target="_blank">↗</a></td><td>Sunset sailing experience</td><td>Book ahead, weather dependent</td></tr>
+            <tr><td>Surf Lessons Waikiki<a class="map-link" href="https://maps.google.com/?q=surf+lessons+Waikiki+Beach+Honolulu" target="_blank">↗</a></td><td>Beginner-friendly surfing</td><td>Book in advance or same-day</td></tr>
           </tbody>
         </table>
       </div>
@@ -393,7 +454,7 @@ footer a{color:rgba(255,255,255,0.42);}
 <div class="toast" id="toast"></div>
 
 <script>
-// ── PASSWORD ──────────────────────────────────────────────
+// ── PASSWORD ──────────────────────────────────────────────────
 const PASSWORD = 'kewpie';
 function checkPw() {
   const v = document.getElementById('gate-input').value;
@@ -401,7 +462,7 @@ function checkPw() {
     document.getElementById('gate').style.display = 'none';
     document.getElementById('site').style.display = 'block';
     sessionStorage.setItem('hw_auth','1');
-    buildCalendar();
+    initCalendar();
   } else {
     const e = document.getElementById('gate-error');
     e.textContent = 'Incorrect — try again!';
@@ -414,66 +475,164 @@ if (sessionStorage.getItem('hw_auth') === '1') {
   document.getElementById('site').style.display = 'block';
 }
 
-// ── ACCORDION ─────────────────────────────────────────────
-function toggleAccordion(btn) {
+// ── ACCORDION ─────────────────────────────────────────────────
+function toggleAcc(btn) {
   const body = btn.nextElementSibling;
-  const isOpen = body.classList.contains('open');
-  btn.classList.toggle('open', !isOpen);
-  body.classList.toggle('open', !isOpen);
+  const open = body.classList.contains('open');
+  btn.classList.toggle('open', !open);
+  body.classList.toggle('open', !open);
 }
 
-// ── GUEST DATA ────────────────────────────────────────────
-const GUESTS = [
-  { poc:'Diana',  names:'Diana, Lily',                          arrival:'2025-06-22', departure:'2025-06-29' },
-  { poc:'Linda',  names:'Linda, Jules',                         arrival:'2025-06-24', departure:'2025-06-30' },
-  { poc:'Remy',   names:'Remy, Clara, Ada',                     arrival:'2025-06-24', departure:'2025-07-01' },
-  { poc:'Eric',   names:'Eric, Mavis, Melody, Emerson',         arrival:'2025-06-22', departure:'2025-07-01' },
-  { poc:'Alison', names:'Alison, Daiki, Kei, Liane',            arrival:'2025-06-26', departure:'2025-06-29' },
-  { poc:'Dan',    names:'Dan, Wendy, Marcus, Margaret',         arrival:'2025-06-24', departure:'2025-06-30' },
-  { poc:'Yilun',  names:'Yilun, Yingying',                      arrival:'2025-06-26', departure:'2025-06-28' },
-  { poc:'Keiko',  names:'Keiko, Jordan',                        arrival:'2025-06-24', departure:'2025-06-29' },
+// ── HARDCODED GUEST FALLBACK ───────────────────────────────────
+// Used if the sheet can't be reached
+const FALLBACK_GUESTS = [
+  { poc:'Diana',  names:'Diana, Lily',                  arrival:'2025-06-22', departure:'2025-06-29' },
+  { poc:'Linda',  names:'Linda, Jules',                 arrival:'2025-06-24', departure:'2025-06-30' },
+  { poc:'Remy',   names:'Remy, Clara, Ada',             arrival:'2025-06-24', departure:'2025-07-01' },
+  { poc:'Eric',   names:'Eric, Mavis, Melody, Emerson', arrival:'2025-06-22', departure:'2025-07-01' },
+  { poc:'Alison', names:'Alison, Daiki, Kei, Liane',   arrival:'2025-06-26', departure:'2025-06-29' },
+  { poc:'Dan',    names:'Dan, Wendy, Marcus, Margaret', arrival:'2025-06-24', departure:'2025-06-30' },
+  { poc:'Yilun',  names:'Yilun, Yingying',              arrival:'2025-06-26', departure:'2025-06-28' },
+  { poc:'Keiko',  names:'Keiko, Jordan',                arrival:'2025-06-24', departure:'2025-06-29' },
 ];
 
-const EVENT_DATE = new Date('2025-06-27');
-const DOW = ['Su','Mo','Tu','We','Th','Fr','Sa'];
-const MON = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-function dateKey(d){ return d.toISOString().slice(0,10); }
+// ── GOOGLE VISUALIZATION QUERY API ────────────────────────────
+// This approach uses Google's own Visualization/Query API which works
+// with "anyone with the link" permissions, no API key needed.
+// It returns JSONP which we load via a <script> tag to avoid CORS.
 
-function buildCalendar() {
+const SHEET_ID = '1zSEKiMWck87hSToY6_syvAi8UcQdCLfvg62L2jbp5Gc';
+
+// Column letters in your sheet (adjust if columns move):
+// A=Names, D=Arrival Time, E=Departure Time
+// We query: select A, D, E where A is not null
+const GID_GUESTS = 0;
+
+function vizQueryUrl(gid, query) {
+  const encoded = encodeURIComponent(query);
+  return `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&gid=${gid}&tq=${encoded}`;
+}
+
+// Load via JSONP script tag — avoids CORS entirely
+function loadVizQuery(url) {
+  return new Promise((resolve, reject) => {
+    const cbName = '_gviz_cb_' + Date.now();
+    const timeout = setTimeout(() => {
+      delete window[cbName];
+      reject(new Error('timeout'));
+    }, 8000);
+
+    window[cbName] = function(data) {
+      clearTimeout(timeout);
+      delete window[cbName];
+      script.remove();
+      resolve(data);
+    };
+
+    const script = document.createElement('script');
+    // Google wraps the JSON in google.visualization.Query.setResponse(...)
+    // We need to intercept that. Replace it temporarily.
+    const origSetResponse = window.google?.visualization?.Query?.setResponse;
+    script.src = url + `&tqx=out:json;responseHandler:${cbName}`;
+    script.onerror = () => { clearTimeout(timeout); delete window[cbName]; reject(new Error('load error')); };
+    document.head.appendChild(script);
+  });
+}
+
+// Parse Google Visualization JSON response into row objects
+// The response looks like: google.visualization.Query.setResponse({...})
+// We handle it via responseHandler above
+function parseVizResponse(data) {
+  if (!data || !data.table) return null;
+  const cols = data.table.cols.map(c => c.label || c.id);
+  const rows = (data.table.rows || []).map(r => {
+    const obj = {};
+    cols.forEach((col, i) => {
+      const cell = r.c[i];
+      obj[col] = cell ? (cell.f || cell.v || '') : '';
+    });
+    return obj;
+  });
+  return { cols, rows };
+}
+
+// Normalize date strings from sheet into YYYY-MM-DD
+function normalizeDate(str) {
+  if (!str) return null;
+  str = str.toString().trim();
+  // Already ISO
+  if (/^\d{4}-\d{2}-\d{2}/.test(str)) return str.slice(0,10);
+  // M/D or M/D/YYYY
+  const md = str.match(/^(\d{1,2})\/(\d{1,2})(?:\/(\d{2,4}))?/);
+  if (md) {
+    const y = md[3] ? (md[3].length===2 ? '20'+md[3] : md[3]) : '2025';
+    return `${y}-${md[1].padStart(2,'0')}-${md[2].padStart(2,'0')}`;
+  }
+  // "Jun 22" style
+  const months = {jan:1,feb:2,mar:3,apr:4,may:5,jun:6,jul:7,aug:8,sep:9,oct:10,nov:11,dec:12};
+  const mn = str.match(/(\w+)\s+(\d+)/i);
+  if (mn) {
+    const mo = months[mn[1].toLowerCase().slice(0,3)];
+    if (mo) return `2025-${String(mo).padStart(2,'0')}-${mn[2].padStart(2,'0')}`;
+  }
+  // Try native parse
+  const d = new Date(str);
+  if (!isNaN(d)) return d.toISOString().slice(0,10);
+  return null;
+}
+
+// ── CALENDAR BUILDER ──────────────────────────────────────────
+const DOW = ['Su','Mo','Tu','We','Th','Fr','Sa'];
+const MONLBL = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+// Parse YYYY-MM-DD as LOCAL date to avoid UTC midnight shifting day back
+function localDate(str) {
+  if (!str) return null;
+  const p = str.match(/^(\d{4})-(\d{2})-(\d{2})/);
+  if (p) return new Date(+p[1], +p[2]-1, +p[3]);
+  return new Date(str);
+}
+
+function sameDay(a, b) {
+  return a.getFullYear()===b.getFullYear() && a.getMonth()===b.getMonth() && a.getDate()===b.getDate();
+}
+
+const EVENT_DATE = localDate('2025-06-27');
+
+function buildCalendar(guests) {
   const el = document.getElementById('cal-outer');
-  const allDates = GUESTS.flatMap(g => [new Date(g.arrival), new Date(g.departure)]);
-  const minD = new Date(Math.min(...allDates, EVENT_DATE));
-  const maxD = new Date(Math.max(...allDates, EVENT_DATE));
+  const allD = guests.flatMap(g => [localDate(g.arrival), localDate(g.departure)]).filter(d=>d&&!isNaN(d));
+  if (!allD.length) { el.innerHTML = '<div class="loading-row">No date data found in sheet.</div>'; return; }
+
+  const minD = new Date(Math.min(...allD.map(d=>d.getTime()), EVENT_DATE.getTime()));
+  const maxD = new Date(Math.max(...allD.map(d=>d.getTime()), EVENT_DATE.getTime()));
   minD.setDate(minD.getDate()-1);
   maxD.setDate(maxD.getDate()+1);
 
-  const days = [];
-  let cur = new Date(minD);
-  while (cur <= maxD) { days.push(new Date(cur)); cur.setDate(cur.getDate()+1); }
+  const days=[];
+  let cur=new Date(minD.getFullYear(), minD.getMonth(), minD.getDate());
+  while(cur<=maxD){days.push(new Date(cur));cur.setDate(cur.getDate()+1);}
 
-  const headCells = days.map(d => {
-    const isEv = dateKey(d) === dateKey(EVENT_DATE);
-    return `<div class="cal-dh${isEv?' ev-d':''}">${MON[d.getMonth()]} ${d.getDate()}<br>${DOW[d.getDay()]}</div>`;
+  const headCells = days.map(d=>{
+    const isEv = sameDay(d, EVENT_DATE);
+    return `<div class="cal-dh${isEv?' ev-d':''}">${MONLBL[d.getMonth()]} ${d.getDate()}<br>${DOW[d.getDay()]}</div>`;
   }).join('');
 
-  const rowsHtml = GUESTS.map(g => {
-    const arr = new Date(g.arrival);
-    const dep = new Date(g.departure);
-    const cells = days.map(d => {
-      const isEv   = dateKey(d) === dateKey(EVENT_DATE);
-      const isHere = d >= arr && d <= dep;
-      const cls = isHere ? (isEv ? 'cal-cell here event' : 'cal-cell here') : (isEv ? 'cal-cell event' : 'cal-cell');
-      const tipTxt = isHere ? (isEv ? `${g.poc} — Brunch day! 🌺` : `${g.poc} is in Hawaii`) : (isEv ? 'Brunch 🌺' : '');
-      return `<div class="${cls}">${tipTxt ? `<div class="tip">${tipTxt}</div>` : ''}</div>`;
+  const rowsHtml = guests.map((g, idx)=>{
+    const arr=localDate(g.arrival), dep=localDate(g.departure);
+    if(!arr||!dep||isNaN(arr)||isNaN(dep)) return '';
+    const cells=days.map(d=>{
+      const isEv=sameDay(d,EVENT_DATE);
+      const isHere=d>=arr&&d<=dep;
+      const cls=isHere?(isEv?'cal-cell here event':'cal-cell here'):(isEv?'cal-cell event':'cal-cell');
+      return `<div class="${cls}"></div>`;
     }).join('');
-    return `<div class="cal-row">
-      <div class="cal-name-td">
-        <div class="cal-poc">${g.poc}</div>
-        <div class="cal-names">${g.names}</div>
-      </div>
-      <div class="cal-cells">${cells}</div>
-    </div>`;
-  }).join('');
+    // First row = hosts: show all names as one line, larger, no subtext
+    const nameCell = idx===0
+      ? `<div class="cal-name-td"><div class="cal-poc cal-poc-host">${g.names}</div></div>`
+      : `<div class="cal-name-td"><div class="cal-poc">${g.poc}</div><div class="cal-names">${g.names}</div></div>`;
+    return `<div class="cal-row">${nameCell}<div class="cal-cells">${cells}</div></div>`;
+  }).filter(Boolean).join('');
 
   el.innerHTML = `
     <div class="cal-head">
@@ -487,7 +646,63 @@ function buildCalendar() {
     </div>`;
 }
 
-if (sessionStorage.getItem('hw_auth') === '1') buildCalendar();
+function setSyncStatus(text, live) {
+  document.getElementById('guest-sync-text').textContent = text;
+  document.getElementById('guest-sync-dot').className = 'sync-dot' + (live ? ' live' : '');
+}
+
+// ── MAIN INIT ─────────────────────────────────────────────────
+async function initCalendar() {
+  setSyncStatus('Loading from sheet…', false);
+
+  try {
+    // Use Google Visualization Query API — most reliable no-auth approach
+    // Query: select the Names column (A), Arrival (D), Departure (E)
+    // Adjust the column letters if your sheet differs
+    const query = 'select A, D, E';
+    const url = vizQueryUrl(GID_GUESTS, query);
+    const data = await loadVizQuery(url);
+    const parsed = parseVizResponse(data);
+
+    if (!parsed || !parsed.rows.length) throw new Error('empty');
+
+    // Map sheet rows → guest objects
+    // Try to auto-detect column names
+    const cols = parsed.cols;
+    const nameCol  = cols.find(c => /name|guest/i.test(c)) || cols[0];
+    const arrCol   = cols.find(c => /arriv/i.test(c)) || cols[1];
+    const depCol   = cols.find(c => /depart|leav/i.test(c)) || cols[2];
+
+    const guests = parsed.rows
+      .filter(r => r[nameCol])
+      .map(r => {
+        const fullName = r[nameCol];
+        // Use first name as POC, rest as names (comma separated, no & or and)
+        const cleaned = fullName.replace(/\s*&\s*/g,', ').replace(/\band\b/gi,',').replace(/\s*,\s*/g,', ').trim();
+        const parts = cleaned.split(',').map(s=>s.trim()).filter(Boolean);
+        // Strip parenthetical notes like "(5)" or "(10)"
+        const cleanParts = parts.map(p => p.replace(/\s*\(\d+\)/,'').trim());
+        const poc = cleanParts[0] || 'Guest';
+        const names = cleanParts.join(', ');
+        const arrival   = normalizeDate(r[arrCol]);
+        const departure = normalizeDate(r[depCol]);
+        return { poc, names, arrival, departure };
+      })
+      .filter(g => g.arrival && g.departure);
+
+    if (!guests.length) throw new Error('no valid dates');
+
+    buildCalendar(guests);
+    setSyncStatus('Live from Google Sheet · ' + new Date().toLocaleTimeString(), true);
+
+  } catch(err) {
+    console.warn('Sheet load failed, using hardcoded data:', err);
+    buildCalendar(FALLBACK_GUESTS);
+    setSyncStatus('Showing saved data — sheet unavailable', false);
+  }
+}
+
+if (sessionStorage.getItem('hw_auth') === '1') initCalendar();
 </script>
 </body>
 </html>
