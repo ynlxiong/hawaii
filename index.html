@@ -14,12 +14,13 @@
   --ink:#1C1B18;--ink-2:#6B6760;--ink-3:#9E9B95;--white:#FDFCF9;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
-html{-webkit-font-smoothing:antialiased;}
+html{-webkit-font-smoothing:antialiased;overflow-x:hidden;}
 body{
-  font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;
+  font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;overflow-x:hidden;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
 }
 a{color:var(--ocean);text-decoration:none;}
+img,iframe,table{max-width:100%;}
 
 /* PASSWORD GATE */
 #gate{position:fixed;inset:0;z-index:9999;background:var(--ocean-deep);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1.8rem;padding:2rem;}
@@ -52,7 +53,7 @@ nav.hide{transform:translateY(-100%);}
 /* HERO */
 .hero-and-cel{background:linear-gradient(160deg,#082e40 0%,var(--ocean-deep) 40%,#134f6b 100%);position:relative;padding-bottom:3rem;}
 .hero{text-align:center;padding:6rem 2rem 0;color:white;position:relative;z-index:2;}
-.hero-eyebrow{font-size:0.7rem;letter-spacing:0.26em;text-transform:uppercase;color:rgba(255,255,255,0.38);margin-bottom:1.4rem;}
+.hero-eyebrow{font-size:0.7rem;letter-spacing:0.26em;text-transform:uppercase;color:rgba(255,255,255,0.38);margin-bottom:1.4rem;word-break:keep-all;}
 .hero-title{font-family:'Fraunces',serif;font-size:clamp(3rem,8vw,6rem);font-weight:300;line-height:1;margin-bottom:0.5rem;letter-spacing:0.01em;}
 .hero-title em{font-style:italic;color:rgba(255,255,255,0.45);}
 
@@ -78,6 +79,8 @@ nav.hide{transform:translateY(-100%);}
 .ev-name{font-size:0.88rem;font-weight:500;color:var(--ink);margin-bottom:0.1rem;}
 .ev-detail{font-size:0.78rem;color:var(--ink-2);line-height:1.55;}
 .ev-badge{font-size:0.62rem;padding:2px 8px;border-radius:2px;font-weight:500;white-space:nowrap;align-self:flex-start;margin-top:3px;background:rgba(184,64,94,0.08);color:var(--hibiscus);letter-spacing:0.05em;text-transform:uppercase;}
+.badge-br{display:none;}
+@media(max-width:700px){.badge-br{display:block;}.ev-badge{white-space:normal;text-align:center;}}
 
 /* Dress code */
 .dress-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;padding:1.8rem;}
@@ -104,7 +107,7 @@ nav.hide{transform:translateY(-100%);}
 .white-section{background:var(--bg);padding:3.5rem 2.5rem;}
 .white-section+.white-section{border-top:1px solid var(--rule);}
 .white-section:nth-child(even){background:var(--bg-2);}
-.si{max-width:1080px;margin:0 auto;}
+.si{max-width:1080px;margin:0 auto;width:100%;}
 .sec-title{font-family:'Fraunces',serif;font-size:1.75rem;font-weight:300;color:var(--ink);margin-bottom:0.3rem;letter-spacing:0.01em;}
 .sec-sub{font-size:0.81rem;color:var(--ink-2);margin-bottom:1rem;line-height:1.75;letter-spacing:0.01em;}
 
@@ -152,7 +155,7 @@ nav.hide{transform:translateY(-100%);}
 
 /* ACCORDION */
 .accordion{border:1px solid var(--rule);border-radius:3px;overflow:hidden;margin-bottom:0.5rem;}
-.accordion-btn{width:100%;background:var(--white);border:none;padding:0.9rem 1.1rem;display:flex;align-items:center;justify-content:space-between;cursor:pointer;font-family:'Inter',sans-serif;font-size:0.82rem;font-weight:500;color:var(--ink);text-align:left;letter-spacing:0.01em;transition:background 0.12s;}
+.accordion-btn{width:100%;background:var(--white);border:none;padding:0.9rem 1.1rem;display:flex;align-items:center;justify-content:space-between;cursor:pointer;font-family:'Inter',sans-serif;font-size:0.82rem;font-weight:500;color:var(--ink);text-align:left;letter-spacing:0.01em;transition:background 0.12s;min-width:0;}
 .accordion-btn:hover{background:var(--bg-2);}
 .accordion-icon{font-size:0.85rem;margin-right:0.5rem;}
 .accordion-chevron{font-size:0.62rem;color:var(--ink-3);transition:transform 0.2s;flex-shrink:0;margin-left:0.5rem;}
@@ -201,13 +204,19 @@ footer a{color:rgba(255,255,255,0.38);}
   .dress-cols{grid-template-columns:1fr;}
   .nav-links{display:none;}
   .hamburger{display:flex;}
-  nav{padding:0 1.2rem;}
+  nav{padding:0 1rem;}
   .wa-wrap{flex-direction:column;text-align:center;}
   .cal-mobile{display:inline;}
   .cal-desktop{display:none;}
-  .cal-table thead th.cal-name-th,.cal-table tbody td.cal-name-td{width:80px;white-space:nowrap;}
-  .cel-island{border-radius:10px;margin:0 0.75rem 1.5rem;padding:1.8rem 1.2rem 2.2rem;}
-  .white-section{padding:2.5rem 1.2rem;}
+  .cal-table thead th.cal-name-th,.cal-table tbody td.cal-name-td{width:70px;white-space:nowrap;}
+  .cal-table thead th.cal-pad,.cal-table tbody td.cal-pad{width:4px;}
+  .cel-island{border-radius:10px;margin:0 0.6rem 1.5rem;padding:1.6rem 1rem 2rem;}
+  .white-section{padding:2rem 1rem;}
+  /* Rec tables wrap text on mobile */
+  .rec-table{table-layout:fixed;word-break:break-word;}
+  .rec-table td,.rec-table th{padding:0.5rem 0.6rem;font-size:0.76rem;}
+  /* Prevent any element from exceeding viewport */
+  .si,.sand-card,.accordion,.wa-wrap,.cel-island{max-width:100%;box-sizing:border-box;}
 }
 </style>
 </head>
@@ -249,7 +258,7 @@ footer a{color:rgba(255,255,255,0.38);}
 <!-- HERO + CELEBRATION — seamless ocean → sand -->
 <div class="hero-and-cel">
   <div class="hero">
-    <p class="hero-eyebrow">You're invited to celebrate with us</p>
+    <p class="hero-eyebrow">You're invited to&nbsp;celebrate with us</p>
     <h1 class="hero-title">Aloha &amp; <em>I Do</em></h1>
   </div>
   <div class="cel-island" id="event">
@@ -263,7 +272,6 @@ footer a{color:rgba(255,255,255,0.38);}
         <div class="sand-card">
           <div class="ev-header">
             <span class="ev-day">Friday, June 27</span>
-            <span class="ev-date-lbl">The Big Day</span>
           </div>
           <div class="ev-body">
             <div class="ev-row">
@@ -273,7 +281,7 @@ footer a{color:rgba(255,255,255,0.38);}
                 <div class="ev-name">Wedding Celebration Brunch</div>
                 <div class="ev-detail">Come hungry, come happy — we're celebrating! More details to follow.</div>
               </div>
-              <span class="ev-badge">All guests</span>
+              <span class="ev-badge">All<br class="badge-br"> guests</span>
             </div>
           </div>
         </div>
