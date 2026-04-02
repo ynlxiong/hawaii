@@ -90,6 +90,16 @@ nav.hide{transform:translateY(-100%);}
 .dress-who{font-size:0.65rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:3px;}
 .dress-what{font-size:0.81rem;color:var(--ink);line-height:1.55;}
 
+.dress-panel{padding:1.6rem 1.8rem;}
+.dress-top{margin-bottom:1.4rem;padding-bottom:1.2rem;border-bottom:1px solid var(--rule);}
+.dress-cols{display:grid;grid-template-columns:1fr 1fr;gap:2rem;}
+.dress-col{}
+.dress-list{padding-left:1.1rem;margin-top:0.5rem;}
+.dress-list li{font-size:0.8rem;color:var(--ink-2);line-height:1.65;margin-bottom:0.35rem;}
+.dress-palette-p{font-size:0.8rem;color:var(--ink-2);line-height:1.65;margin-top:0.5rem;margin-bottom:0.9rem;}
+.dress-swatches{display:flex;gap:6px;margin-bottom:1rem;}
+.swatch{width:28px;height:28px;border-radius:50%;border:1px solid var(--rule);}
+
 /* SECTIONS */
 .white-section{background:var(--bg);padding:3.5rem 2.5rem;}
 .white-section+.white-section{border-top:1px solid var(--rule);}
@@ -108,10 +118,13 @@ nav.hide{transform:translateY(-100%);}
 .cal-outer{background:var(--white);border-radius:4px;border:1px solid var(--rule);overflow:hidden;}
 .cal-table{width:100%;border-collapse:collapse;table-layout:fixed;}
 .cal-table thead tr{background:var(--ocean-deep);}
-.cal-table thead th{padding:0.55rem 3px;font-size:0.57rem;font-weight:500;color:rgba(255,255,255,0.5);text-align:center;line-height:1.3;white-space:nowrap;letter-spacing:0.02em;}
+.cal-table thead th{padding:0.55rem 3px;font-size:0.57rem;font-weight:500;color:rgba(255,255,255,0.75);text-align:center;line-height:1.3;white-space:nowrap;letter-spacing:0.02em;}
 .cal-table thead th.cal-pad{width:10px;padding:0;}
+.cal-th-wide{display:inline;}
+.cal-th-narrow{display:none;}
+@media(max-width:1000px){.cal-th-wide{display:none;}.cal-th-narrow{display:inline;}}
 .cal-table tbody td.cal-pad{width:10px;padding:0;}
-.cal-table thead th.cal-name-th{width:180px;text-align:left;padding:0.55rem 1rem;font-size:0.64rem;letter-spacing:0.09em;text-transform:uppercase;color:rgba(255,255,255,0.38);white-space:nowrap;}
+.cal-table thead th.cal-name-th{width:180px;text-align:left;padding:0.55rem 1rem;font-size:0.64rem;letter-spacing:0.09em;text-transform:uppercase;color:rgba(255,255,255,0.75);white-space:nowrap;}
 .cal-table thead th.ev-d{color:#F2A0B0;font-weight:600;}
 .cal-table tbody tr{border-bottom:1px solid var(--rule);}
 .cal-table tbody tr:last-child{border-bottom:none;}
@@ -120,6 +133,7 @@ nav.hide{transform:translateY(-100%);}
 .cal-table tbody td.cal-name-td{width:180px;padding:0.5rem 1rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .cal-poc{font-size:0.81rem;font-weight:500;color:var(--ink);}
 .cal-poc-host{font-size:0.86rem;font-weight:500;color:var(--ocean-deep);}
+.cal-names-rest{font-size:0.68rem;color:var(--ink-3);margin-top:1px;line-height:1.3;}
 .cal-cell{width:100%;height:18px;display:block;border-radius:2px;}
 .cal-cell.here{background:var(--ocean);opacity:0.6;}
 .cal-cell.event{background:var(--hibiscus)!important;opacity:0.85;}
@@ -184,6 +198,7 @@ footer a{color:rgba(255,255,255,0.38);}
 
 @media(max-width:700px){
   .dress-grid{grid-template-columns:1fr;}
+  .dress-cols{grid-template-columns:1fr;}
   .nav-links{display:none;}
   .hamburger{display:flex;}
   nav{padding:0 1.2rem;}
@@ -265,25 +280,26 @@ footer a{color:rgba(255,255,255,0.38);}
 
         <!-- Dress code card -->
         <div class="sand-card">
-          <div class="dress-grid">
-            <div>
+          <div class="dress-panel">
+            <div class="dress-top">
               <div class="dress-label">Dress Code</div>
-              <div class="dress-h">Smart Casual<br>Hawaiian Style</div>
-              <p class="dress-p">Look great for the photographer, but keep it breezy and comfortable. Think polished resort wear — you'll be in the Hawaiian sun.</p>
-              <p class="dress-note">📸 There will be a photographer — wear something you'll love in photos!</p>
+              <div class="dress-h">Smart Casual — Hawaiian Style</div>
+              <p class="dress-p">Lightweight, breathable fabrics like linen or cotton work best. Go for pieces that feel relaxed but put-together — and wear something you'll love in photos!</p>
             </div>
-            <div>
-              <div class="dress-ex">
-                <div class="dress-who">For the guys</div>
-                <div class="dress-what">Linen or cotton button-down (florals welcome!), chinos or dress shorts, loafers or clean sandals</div>
+            <div class="dress-cols">
+              <div class="dress-col">
+                <div class="dress-who">Attire Ideas</div>
+                <ul class="dress-list">
+                  <li>Button-downs, breezy tops, or elegant blouses (florals and tropical prints welcome!)</li>
+                  <li>Chinos, tailored shorts, flowy skirts, or relaxed-fit trousers</li>
+                  <li>Sundresses, midi dresses, or coordinated sets for an easy, polished look</li>
+                  <li>Footwear like loafers, clean sandals, wedges, or other comfortable dressy options</li>
+                </ul>
               </div>
-              <div class="dress-ex">
-                <div class="dress-who">For the ladies</div>
-                <div class="dress-what">Flowy sundress, midi dress, or tropical print — beachy elegance. Wedges or sandals are perfect.</div>
-              </div>
-              <div class="dress-ex">
-                <div class="dress-who">Good palette</div>
-                <div class="dress-what">Whites, pastels, tropical prints, soft blues &amp; greens — Hawaii colors look gorgeous in photos</div>
+              <div class="dress-col">
+                <div class="dress-who">Color Palette</div>
+                <p class="dress-palette-p">Whites, pastels, tropical prints, soft blues &amp; greens — Hawaii colors look gorgeous in photos.</p>
+                <p class="dress-note">📸 There will be a photographer — wear something you love!</p>
               </div>
             </div>
           </div>
@@ -543,7 +559,7 @@ function normalizeDate(str) {
 }
 
 // ── CALENDAR BUILDER ──────────────────────────────────────────
-const DOW = ['Su','Mo','Tu','We','Th','Fr','Sa'];
+const DOW = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
 const MONLBL = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 
 // Parse YYYY-MM-DD as LOCAL date to avoid UTC midnight shifting day back
@@ -567,7 +583,9 @@ function buildCalendar(guests) {
 
   const minD = new Date(Math.min(...allD.map(d=>d.getTime()), EVENT_DATE.getTime()));
   const maxD = new Date(Math.max(...allD.map(d=>d.getTime()), EVENT_DATE.getTime()));
-  // No padding — start and end exactly at first/last date
+  // Cap end date at Jul 2
+  const cap = localDate('2025-07-02');
+  if (maxD > cap) maxD.setTime(cap.getTime());
 
   const days=[];
   let cur=new Date(minD.getFullYear(), minD.getMonth(), minD.getDate());
@@ -575,7 +593,13 @@ function buildCalendar(guests) {
 
   const headCols = days.map(d => {
     const isEv = sameDay(d, EVENT_DATE);
-    return `<th class="${isEv?'ev-d':''}">${MONLBL[d.getMonth()].toUpperCase()} ${d.getDate()}<br>${DOW[d.getDay()]}</th>`;
+    const mo = MONLBL[d.getMonth()].toUpperCase();
+    const dt = d.getDate();
+    const dw = DOW[d.getDay()];
+    return `<th class="${isEv?'ev-d':''}">`
+      + `<span class="cal-th-wide">${mo} ${dt}<br>${dw}</span>`
+      + `<span class="cal-th-narrow">${mo}<br>${dt}<br>${dw}</span>`
+      + `</th>`;
   }).join('');
 
   const rowsHtml = guests.map((g, idx) => {
@@ -588,12 +612,19 @@ function buildCalendar(guests) {
     }).join('');
 
     const countStr = g.count > 1 ? ` (${g.count})` : '';
+    // Split names: first = POC large, rest = smaller second line
+    const allNames = g.names.split(', ');
+    const pocName  = allNames[0];
+    const restNames = allNames.slice(1).join(', ');
     const nameCell = idx === 0
       ? `<td class="cal-name-td"><div class="cal-poc cal-poc-host">Diana &amp; Lily</div></td>`
-      : `<td class="cal-name-td"><div class="cal-poc">
-           <span class="cal-desktop">${g.names}</span>
-           <span class="cal-mobile">${g.poc}${countStr}</span>
-         </div></td>`;
+      : `<td class="cal-name-td">
+           <span class="cal-desktop">
+             <div class="cal-poc">${pocName}</div>
+             ${restNames ? `<div class="cal-names-rest">${restNames}</div>` : ''}
+           </span>
+           <span class="cal-mobile"><div class="cal-poc">${g.poc}${countStr}</div></span>
+         </td>`;
 
     return `<tr>${nameCell}<td class="cal-pad"></td>${dayCells}<td class="cal-pad"></td></tr>`;
   }).join('');
