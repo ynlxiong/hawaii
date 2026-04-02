@@ -54,6 +54,8 @@ nav.hide{transform:translateY(-100%);}
 .hero-and-cel{background:linear-gradient(160deg,#082e40 0%,var(--ocean-deep) 40%,#134f6b 100%);position:relative;padding-bottom:3rem;}
 .hero{text-align:center;padding:6rem 2rem 0;color:white;position:relative;z-index:2;}
 .hero-eyebrow{font-size:0.7rem;letter-spacing:0.26em;text-transform:uppercase;color:rgba(255,255,255,0.38);margin-bottom:1.4rem;word-break:keep-all;}
+.eyebrow-br{display:none;}
+@media(max-width:420px){.eyebrow-br{display:block;}}
 .hero-title{font-family:'Fraunces',serif;font-size:clamp(3rem,8vw,6rem);font-weight:300;line-height:1;margin-bottom:0.5rem;letter-spacing:0.01em;}
 .hero-title em{font-style:italic;color:rgba(255,255,255,0.45);}
 
@@ -258,7 +260,7 @@ footer a{color:rgba(255,255,255,0.38);}
 <!-- HERO + CELEBRATION — seamless ocean → sand -->
 <div class="hero-and-cel">
   <div class="hero">
-    <p class="hero-eyebrow">You're invited to&nbsp;celebrate with us</p>
+    <p class="hero-eyebrow">You're invited to<br class="eyebrow-br"> celebrate with us</p>
     <h1 class="hero-title">Aloha &amp; <em>I Do</em></h1>
   </div>
   <div class="cel-island" id="event">
