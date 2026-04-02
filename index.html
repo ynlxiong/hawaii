@@ -14,9 +14,9 @@
   --ink:#1C1B18;--ink-2:#6B6760;--ink-3:#9E9B95;--white:#FDFCF9;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
-html{-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+html{-webkit-font-smoothing:antialiased;overflow-x:clip;}
 body{
-  font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;overflow-x:hidden;
+  font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;overflow-x:clip;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
 }
 a{color:var(--ocean);text-decoration:none;}
@@ -120,22 +120,24 @@ nav.hide{transform:translateY(-100%);}
 @keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.3;}}
 
 /* TRAVEL CALENDAR */
-.cal-outer{background:var(--white);border-radius:4px;border:1px solid var(--rule);overflow:hidden;}
+.cal-outer{background:var(--white);border-radius:4px;border:1px solid var(--rule);overflow:hidden;max-width:100%;}
 .cal-table{width:100%;border-collapse:collapse;table-layout:fixed;}
 .cal-table thead tr{background:var(--ocean-deep);}
-.cal-table thead th{padding:0.55rem 3px;font-size:0.57rem;font-weight:500;color:rgba(255,255,255,0.75);text-align:center;line-height:1.3;white-space:nowrap;letter-spacing:0.02em;}
+.cal-table thead th{padding:0.55rem 1px;font-size:0.57rem;font-weight:500;color:rgba(255,255,255,0.75);text-align:center;line-height:1.3;white-space:nowrap;letter-spacing:0.02em;}
 .cal-table thead th.cal-pad{width:10px;padding:0;}
 .cal-th-wide{display:inline;}
 .cal-th-narrow{display:none;}
+.cal-th-mini{display:none;}
 @media(max-width:1000px){.cal-th-wide{display:none;}.cal-th-narrow{display:inline;}}
+@media(max-width:600px){.cal-th-narrow{display:none;}.cal-th-mini{display:inline;line-height:1.4;}}
 .cal-table tbody td.cal-pad{width:10px;padding:0;}
-.cal-table thead th.cal-name-th{width:180px;text-align:left;padding:0.55rem 1rem;font-size:0.64rem;letter-spacing:0.09em;text-transform:uppercase;color:rgba(255,255,255,0.75);white-space:nowrap;}
+.cal-table thead th.cal-name-th{width:210px;text-align:left;padding:0.55rem 1rem;font-size:0.64rem;letter-spacing:0.09em;text-transform:uppercase;color:rgba(255,255,255,0.75);white-space:nowrap;}
 .cal-table thead th.ev-d{color:#F2A0B0;font-weight:600;}
 .cal-table tbody tr{border-bottom:1px solid var(--rule);}
 .cal-table tbody tr:last-child{border-bottom:none;}
 .cal-table tbody tr:hover td{background:rgba(26,107,138,0.04);}
-.cal-table tbody td{padding:4px 3px;vertical-align:middle;}
-.cal-table tbody td.cal-name-td{width:180px;padding:0.5rem 1rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.cal-table tbody td{padding:4px 1px;vertical-align:middle;}
+.cal-table tbody td.cal-name-td{width:210px;padding:0.5rem 1rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .cal-poc{font-size:0.81rem;font-weight:500;color:var(--ink);}
 .cal-poc-host{font-size:0.86rem;font-weight:500;color:var(--ocean-deep);}
 .cal-names-rest{font-size:0.68rem;color:var(--ink-3);margin-top:1px;line-height:1.3;}
@@ -210,7 +212,7 @@ footer a{color:rgba(255,255,255,0.38);}
   .wa-wrap{flex-direction:column;text-align:center;}
   .cal-mobile{display:inline;}
   .cal-desktop{display:none;}
-  .cal-table thead th.cal-name-th,.cal-table tbody td.cal-name-td{width:70px;white-space:nowrap;}
+  .cal-table thead th.cal-name-th,.cal-table tbody td.cal-name-td{width:90px;white-space:nowrap;}
   .cal-table thead th.cal-pad,.cal-table tbody td.cal-pad{width:4px;}
   .cel-island{border-radius:10px;margin:0 0.6rem 1.5rem;padding:1.6rem 1rem 2rem;}
   .white-section{padding:2rem 1rem;}
@@ -236,7 +238,7 @@ footer a{color:rgba(255,255,255,0.38);}
   <p id="gate-error"></p>
 </div>
 
-<div id="site">
+<div id="site" style="width:100%;overflow-x:hidden;">
 
 <!-- NAV — primary CTA + secondary links -->
 <nav id="main-nav">
@@ -601,14 +603,17 @@ function buildCalendar(guests) {
   let cur=new Date(minD.getFullYear(), minD.getMonth(), minD.getDate());
   while(cur<=maxD){days.push(new Date(cur));cur.setDate(cur.getDate()+1);}
 
+  const DOW_MINI = ['S','M','T','W','Th','F','S'];
   const headCols = days.map(d => {
     const isEv = sameDay(d, EVENT_DATE);
     const mo = MONLBL[d.getMonth()].toUpperCase();
+    const moNum = d.getMonth() + 1;
     const dt = d.getDate();
     const dw = DOW[d.getDay()];
     return `<th class="${isEv?'ev-d':''}">`
       + `<span class="cal-th-wide">${mo} ${dt}<br>${dw}</span>`
       + `<span class="cal-th-narrow">${mo}<br>${dt}<br>${dw}</span>`
+      + `<span class="cal-th-mini">${moNum}/${dt}<br>${DOW_MINI[d.getDay()]}</span>`
       + `</th>`;
   }).join('');
 
@@ -621,7 +626,7 @@ function buildCalendar(guests) {
       return `<td><div class="${cls}"></div></td>`;
     }).join('');
 
-    const countStr = g.count > 1 ? ` (${g.count})` : '';
+    const countStr = g.count > 1 ? ` · ${g.count}` : '';
     // Split names: first = POC large, rest = smaller second line
     const allNames = g.names.split(', ');
     const pocName  = allNames[0];
@@ -640,7 +645,7 @@ function buildCalendar(guests) {
   }).join('');
 
   el.innerHTML = `
-    <div style="overflow-x:auto;">
+    <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%;">
       <table class="cal-table">
         <thead>
           <tr>
