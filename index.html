@@ -275,7 +275,7 @@ footer a{color:rgba(255,255,255,0.38);}
         <!-- Event card -->
         <div class="sand-card">
           <div class="ev-header">
-            <span class="ev-day">Friday, June 27</span>
+            <span class="ev-day">Saturday, June 27</span>
           </div>
           <div class="ev-body">
             <div class="ev-row">
@@ -492,14 +492,14 @@ function toggleAcc(btn) {
 // ── HARDCODED GUEST FALLBACK ───────────────────────────────────
 // Used if the sheet can't be reached
 const FALLBACK_GUESTS = [
-  { poc:'Diana',  names:'Diana, Lily',                  count:2, arrival:'2025-06-22', departure:'2025-06-29' },
-  { poc:'Linda',  names:'Linda, Jules',                 count:2, arrival:'2025-06-24', departure:'2025-06-30' },
-  { poc:'Remy',   names:'Remy, Clara, Ada',             count:3, arrival:'2025-06-24', departure:'2025-07-01' },
-  { poc:'Eric',   names:'Eric, Mavis, Melody, Emerson', count:4, arrival:'2025-06-22', departure:'2025-07-01' },
-  { poc:'Alison', names:'Alison, Daiki, Kei, Liane',   count:4, arrival:'2025-06-26', departure:'2025-06-29' },
-  { poc:'Dan',    names:'Dan, Wendy, Marcus, Margaret', count:4, arrival:'2025-06-24', departure:'2025-06-30' },
-  { poc:'Yilun',  names:'Yilun, Yingying',              count:2, arrival:'2025-06-26', departure:'2025-06-28' },
-  { poc:'Keiko',  names:'Keiko, Jordan',                count:2, arrival:'2025-06-24', departure:'2025-06-29' },
+  { poc:'Diana',  names:'Diana, Lily',                  count:2, arrival:'2026-06-22', departure:'2026-06-29' },
+  { poc:'Linda',  names:'Linda, Jules',                 count:2, arrival:'2026-06-24', departure:'2026-06-30' },
+  { poc:'Remy',   names:'Remy, Clara, Ada',             count:3, arrival:'2026-06-24', departure:'2026-07-01' },
+  { poc:'Eric',   names:'Eric, Mavis, Melody, Emerson', count:4, arrival:'2026-06-22', departure:'2026-07-01' },
+  { poc:'Alison', names:'Alison, Daiki, Kei, Liane',   count:4, arrival:'2026-06-26', departure:'2026-06-29' },
+  { poc:'Dan',    names:'Dan, Wendy, Marcus, Margaret', count:4, arrival:'2026-06-24', departure:'2026-06-30' },
+  { poc:'Yilun',  names:'Yilun, Yingying',              count:2, arrival:'2026-06-26', departure:'2026-06-28' },
+  { poc:'Keiko',  names:'Keiko, Jordan',                count:2, arrival:'2026-06-24', departure:'2026-06-29' },
 ];
 
 // ── GOOGLE VISUALIZATION QUERY API ────────────────────────────
@@ -557,7 +557,7 @@ function normalizeDate(str) {
   // M/D or M/D/YYYY at start — covers "6/22 9:45am..." and "6/22"
   const md = str.match(/^(\d{1,2})\/(\d{1,2})(?:\/(\d{2,4}))?/);
   if (md) {
-    const y = md[3] ? (md[3].length === 2 ? '20' + md[3] : md[3]) : '2025';
+    const y = md[3] ? (md[3].length === 2 ? '20' + md[3] : md[3]) : '2026';
     return `${y}-${md[1].padStart(2,'0')}-${md[2].padStart(2,'0')}`;
   }
   // "Jun 22" style
@@ -565,7 +565,7 @@ function normalizeDate(str) {
   const mn = str.match(/([a-z]+)\s+(\d+)/i);
   if (mn) {
     const mo = MONTHS[mn[1].toLowerCase().slice(0, 3)];
-    if (mo) return `2025-${String(mo).padStart(2,'0')}-${mn[2].padStart(2,'0')}`;
+    if (mo) return `2026-${String(mo).padStart(2,'0')}-${mn[2].padStart(2,'0')}`;
   }
   return null;
 }
@@ -586,7 +586,7 @@ function sameDay(a, b) {
   return a.getFullYear()===b.getFullYear() && a.getMonth()===b.getMonth() && a.getDate()===b.getDate();
 }
 
-const EVENT_DATE = localDate('2025-06-27');
+const EVENT_DATE = localDate('2026-06-27');
 
 function buildCalendar(guests) {
   const el = document.getElementById('cal-outer');
@@ -596,7 +596,7 @@ function buildCalendar(guests) {
   const minD = new Date(Math.min(...allD.map(d=>d.getTime()), EVENT_DATE.getTime()));
   const maxD = new Date(Math.max(...allD.map(d=>d.getTime()), EVENT_DATE.getTime()));
   // Cap end date at Jul 2
-  const cap = localDate('2025-07-02');
+  const cap = localDate('2026-07-02');
   if (maxD > cap) maxD.setTime(cap.getTime());
 
   const days=[];
