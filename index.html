@@ -318,76 +318,73 @@ footer a{color:rgba(255,255,255,0.38);}
       <p class="cel-sec-sub">Everything you need to know about the day</p>
       <div class="cel-grid">
 
-        <!-- Event card — Saturday June 27 -->
+        <!-- Brunch card -->
         <div class="sand-card">
           <div class="ev-header">
             <span class="ev-day">Saturday, June 27</span>
           </div>
           <div class="ev-body">
-            <div class="ev-row">
-              <span class="ev-time">1:00 PM</span>
-              <div class="ev-dot" style="background:#C94B6A"></div>
+            <div class="ev-row" style="border-bottom:none;">
+              <span class="ev-time">10AM–1PM</span>
               <div class="ev-info">
                 <div class="ev-name">Wedding Celebration Brunch</div>
-                <div class="ev-detail">Come hungry, come happy — we're celebrating! More details to follow.</div>
+                <div class="ev-detail">Come hungry, come happy — we're celebrating!</div>
               </div>
               <span class="ev-badge">All<br class="badge-br"> guests</span>
             </div>
           </div>
-          <div style="border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);">
-            <button class="accordion-btn" onclick="toggleAcc(this)" style="background:var(--bg);font-size:0.8rem;">
-              <span><span class="accordion-icon">👗</span>Dress Code — Smart Casual, Hawaiian Style</span>
+          <!-- Secondary info -->
+          <div style="background:var(--bg-2);border-top:1px solid var(--rule);">
+            <!-- Venue accordion -->
+            <button class="accordion-btn" onclick="toggleAcc(this)" style="background:transparent;font-size:0.75rem;color:var(--ink-2);padding:0.65rem 1.4rem;">
+              <span>🌴&nbsp;&nbsp;Venue — Hotel Queen Kapiolani</span>
               <span class="accordion-chevron">▼</span>
             </button>
-            <div class="accordion-body">
-              <div class="dress-panel">
-                <div class="dress-top">
-                  <p class="dress-p">Lightweight, breathable fabrics like linen or cotton work best. Go for pieces that feel relaxed but put-together — and wear something you'll love in photos!</p>
+            <div class="accordion-body" style="border-top:none;border-bottom:1px solid var(--rule);">
+              <div style="display:flex;align-items:stretch;padding:0.2rem 1.4rem 0.8rem 1.7rem;">
+                <div style="width:3px;border-radius:99px;background:linear-gradient(to bottom,#4A9B6E,#7DC4A0);flex-shrink:0;margin-right:0.9rem;margin-top:0.15rem;"></div>
+                <div>
+                  <div style="font-size:0.78rem;font-weight:500;color:var(--ink);margin-bottom:0.2rem;">Hotel Queen Kapiolani</div>
+                  <div style="font-size:0.74rem;color:var(--ink-2);line-height:1.65;margin-bottom:0.35rem;">Leahi Room &amp; Lanai<br>150 Kapahulu Ave, Honolulu, HI 96815<br>Overlooking Kapiolani Park, steps from Waikiki Beach.</div>
+                  <a href="https://maps.google.com/?q=Hotel+Queen+Kapiolani+150+Kapahulu+Ave+Honolulu+HI" target="_blank" style="display:inline-flex;align-items:center;gap:4px;font-size:0.71rem;color:var(--ocean);font-weight:500;text-decoration:none;">↗ Open in Maps</a>
                 </div>
-                <div class="dress-cols">
-                  <div class="dress-col">
-                    <div class="dress-who">Attire Ideas</div>
-                    <ul class="dress-list">
-                      <li>Button-downs, breezy tops, or elegant blouses (florals and tropical prints welcome!)</li>
-                      <li>Chinos, tailored shorts, flowy skirts, or relaxed-fit trousers</li>
-                      <li>Sundresses, midi dresses, or coordinated sets for an easy, polished look</li>
-                      <li>Footwear like loafers, clean sandals, wedges, or other comfortable dressy options</li>
-                    </ul>
-                  </div>
-                  <div class="dress-col">
-                    <div class="dress-who">Color Palette</div>
-                    <p class="dress-palette-p">Whites, pastels, tropical prints, soft blues &amp; greens — Hawaii colors look gorgeous in photos.</p>
-                    <p class="dress-note">📸 There will be a photographer — wear something you love!</p>
-                  </div>
+              </div>
+            </div>
+            <!-- Dress Code accordion -->
+            <button class="accordion-btn" onclick="toggleAcc(this)" style="background:transparent;font-size:0.75rem;color:var(--ink-2);padding:0.65rem 1.4rem;">
+              <span>🌺&nbsp;&nbsp;Dress Code — Resort Casual</span>
+              <span class="accordion-chevron">▼</span>
+            </button>
+            <div class="accordion-body" style="border-top:none;">
+              <div style="display:flex;align-items:stretch;padding:0.2rem 1.4rem 0.9rem 1.7rem;">
+                <div style="width:3px;border-radius:99px;background:linear-gradient(to bottom,var(--hibiscus),#D4758E);flex-shrink:0;margin-right:0.9rem;margin-top:0.15rem;"></div>
+                <div>
+                  <p style="font-size:0.78rem;font-weight:500;color:var(--ink);margin-bottom:0.2rem;">Relaxed and put together with beachy vibes</p>
+                  <p style="font-size:0.76rem;color:var(--ink-2);line-height:1.7;margin-bottom:0.6rem;">Breezy, polished looks that feel effortless, comfortable, and sun-soaked. There will be a photographer, so dress how you want to be remembered! 📸</p>
+                  <div style="font-size:0.63rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-3);margin-bottom:0.35rem;">Attire Ideas</div>
+                  <ul class="dress-list">
+                    <li>Easy polished silhouettes — flowy dresses, relaxed trousers, or button-downs</li>
+                    <li>Light, breathable pieces in soft neutrals, tropical tones, or subtle prints</li>
+                  </ul>
                 </div>
               </div>
             </div>
           </div>
+        </div>
+
+        <!-- Sunset Cruise card -->
+        <div class="sand-card">
+          <div class="ev-header">
+            <span class="ev-day">Saturday, June 27</span>
+          </div>
           <div class="ev-body">
             <div class="ev-row" style="border-bottom:none;">
               <span class="ev-time">5:30 PM</span>
-              <div class="ev-dot" style="background:#1A6B8A"></div>
               <div class="ev-info">
                 <div class="ev-name">Sunset Cruise</div>
                 <div class="ev-detail">Set sail and watch the sun dip into the Pacific. More details to follow.</div>
               </div>
               <span class="ev-badge">All<br class="badge-br"> guests</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Location card -->
-        <div class="sand-card">
-          <div class="ev-header" style="background:var(--ocean-deep);">
-            <span class="ev-day">📍 Venue &amp; Hotel</span>
-          </div>
-          <div class="ev-body">
-            <div class="ev-row" style="border-bottom:none;">
-              <div class="ev-info">
-                <div class="ev-name">Hotel Queen Kapiolani</div>
-                <div class="ev-detail" style="margin-bottom:0.6rem;">150 Kapahulu Ave, Honolulu, HI 96815<br>Venue for the wedding brunch and where most guests are staying. Overlooking Kapiolani Park and steps from Waikiki Beach.</div>
-                <a href="https://maps.google.com/?q=Hotel+Queen+Kapiolani+150+Kapahulu+Ave+Honolulu+HI" target="_blank" style="display:inline-flex;align-items:center;gap:5px;font-size:0.75rem;color:var(--ocean);font-weight:500;text-decoration:none;">↗ Open in Maps</a>
-              </div>
             </div>
           </div>
         </div>
@@ -407,7 +404,6 @@ footer a{color:rgba(255,255,255,0.38);}
           <div class="ev-body">
             <div class="ev-row" style="border-bottom:none;">
               <span class="ev-time">5:30 PM</span>
-              <div class="ev-dot" style="background:#B08040"></div>
               <div class="ev-info">
                 <div class="ev-name">Happy Hour on the Deck</div>
                 <div class="ev-detail">Join us for drinks at the deck — Hotel Queen Kapiolani. A relaxed kickoff to the weekend!</div>
@@ -425,7 +421,6 @@ footer a{color:rgba(255,255,255,0.38);}
           <div class="ev-body">
             <div class="ev-row" style="border-bottom:none;">
               <span class="ev-time">8:00 AM</span>
-              <div class="ev-dot" style="background:#4A9B6E"></div>
               <div class="ev-info">
                 <div class="ev-name">Diamond Head Hike</div>
                 <div class="ev-detail">Early morning hike up Diamond Head — rewarded with panoramic views of Waikiki and the coastline. More details to follow.</div>
@@ -831,7 +826,7 @@ function buildCalendar(guests) {
     </div>
     <div class="cal-legend">
       <div class="leg"><div class="leg-sq" style="background:var(--ocean);opacity:0.6"></div>In Hawaii</div>
-      <div class="leg"><div class="leg-sq" style="background:var(--hibiscus);opacity:0.85"></div>June 27 — Brunch</div>
+      <div class="leg"><div class="leg-sq" style="background:var(--hibiscus);opacity:0.85"></div>June 27 — Brunch &amp; Sunset Cruise</div>
     </div>`;
 }
 
