@@ -316,28 +316,9 @@ footer a{color:rgba(255,255,255,0.38);}
     <div class="cel-inner">
       <h2 class="cel-sec-title">The Celebration</h2>
       <p class="cel-sec-sub">Everything you need to know about the day</p>
-      <div class="cel-divider" style="display:none"></div>
       <div class="cel-grid">
 
-        <!-- Friday June 26 card -->
-        <div class="sand-card">
-          <div class="ev-header">
-            <span class="ev-day">Friday, June 26</span>
-          </div>
-          <div class="ev-body">
-            <div class="ev-row">
-              <span class="ev-time">5:30 PM</span>
-              <div class="ev-dot" style="background:#B08040"></div>
-              <div class="ev-info">
-                <div class="ev-name">Happy Hour on the Deck</div>
-                <div class="ev-detail">Join us for drinks at the deck — Hotel Queen Kapiolani. A relaxed kickoff to the weekend!</div>
-              </div>
-              <span class="ev-badge" style="background:rgba(176,128,64,0.1);color:var(--gold);">Optional</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Event card -->
+        <!-- Event card — Saturday June 27 -->
         <div class="sand-card">
           <div class="ev-header">
             <span class="ev-day">Saturday, June 27</span>
@@ -353,26 +334,32 @@ footer a{color:rgba(255,255,255,0.38);}
               <span class="ev-badge">All<br class="badge-br"> guests</span>
             </div>
           </div>
-          <div class="dress-panel" style="border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);">
-            <div class="dress-top">
-              <div class="dress-label">Dress Code</div>
-              <div class="dress-h">Smart Casual — Hawaiian Style</div>
-              <p class="dress-p">Lightweight, breathable fabrics like linen or cotton work best. Go for pieces that feel relaxed but put-together — and wear something you'll love in photos!</p>
-            </div>
-            <div class="dress-cols">
-              <div class="dress-col">
-                <div class="dress-who">Attire Ideas</div>
-                <ul class="dress-list">
-                  <li>Button-downs, breezy tops, or elegant blouses (florals and tropical prints welcome!)</li>
-                  <li>Chinos, tailored shorts, flowy skirts, or relaxed-fit trousers</li>
-                  <li>Sundresses, midi dresses, or coordinated sets for an easy, polished look</li>
-                  <li>Footwear like loafers, clean sandals, wedges, or other comfortable dressy options</li>
-                </ul>
-              </div>
-              <div class="dress-col">
-                <div class="dress-who">Color Palette</div>
-                <p class="dress-palette-p">Whites, pastels, tropical prints, soft blues &amp; greens — Hawaii colors look gorgeous in photos.</p>
-                <p class="dress-note">📸 There will be a photographer — wear something you love!</p>
+          <div style="border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);">
+            <button class="accordion-btn" onclick="toggleAcc(this)" style="background:var(--bg);font-size:0.8rem;">
+              <span><span class="accordion-icon">👗</span>Dress Code — Smart Casual, Hawaiian Style</span>
+              <span class="accordion-chevron">▼</span>
+            </button>
+            <div class="accordion-body">
+              <div class="dress-panel">
+                <div class="dress-top">
+                  <p class="dress-p">Lightweight, breathable fabrics like linen or cotton work best. Go for pieces that feel relaxed but put-together — and wear something you'll love in photos!</p>
+                </div>
+                <div class="dress-cols">
+                  <div class="dress-col">
+                    <div class="dress-who">Attire Ideas</div>
+                    <ul class="dress-list">
+                      <li>Button-downs, breezy tops, or elegant blouses (florals and tropical prints welcome!)</li>
+                      <li>Chinos, tailored shorts, flowy skirts, or relaxed-fit trousers</li>
+                      <li>Sundresses, midi dresses, or coordinated sets for an easy, polished look</li>
+                      <li>Footwear like loafers, clean sandals, wedges, or other comfortable dressy options</li>
+                    </ul>
+                  </div>
+                  <div class="dress-col">
+                    <div class="dress-who">Color Palette</div>
+                    <p class="dress-palette-p">Whites, pastels, tropical prints, soft blues &amp; greens — Hawaii colors look gorgeous in photos.</p>
+                    <p class="dress-note">📸 There will be a photographer — wear something you love!</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -385,24 +372,6 @@ footer a{color:rgba(255,255,255,0.38);}
                 <div class="ev-detail">Set sail and watch the sun dip into the Pacific. More details to follow.</div>
               </div>
               <span class="ev-badge">All<br class="badge-br"> guests</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Sunday June 28 card -->
-        <div class="sand-card">
-          <div class="ev-header">
-            <span class="ev-day">Sunday, June 28</span>
-          </div>
-          <div class="ev-body">
-            <div class="ev-row">
-              <span class="ev-time">8:00 AM</span>
-              <div class="ev-dot" style="background:#4A9B6E"></div>
-              <div class="ev-info">
-                <div class="ev-name">Diamond Head Hike</div>
-                <div class="ev-detail">Early morning hike up Diamond Head — rewarded with panoramic views of Waikiki and the coastline. More details to follow.</div>
-              </div>
-              <span class="ev-badge" style="background:rgba(176,128,64,0.1);color:var(--gold);">Optional</span>
             </div>
           </div>
         </div>
@@ -423,6 +392,48 @@ footer a{color:rgba(255,255,255,0.38);}
           </div>
         </div>
 
+      </div>
+
+      <!-- Optional Activities -->
+      <h2 class="cel-sec-title" style="margin-top:2.5rem;">While You're Here</h2>
+      <p class="cel-sec-sub">Optional activities to enjoy with the group — vote on these or propose your own in the <strong>WhatsApp group chat</strong>!</p>
+      <div class="cel-grid">
+
+        <!-- Friday June 26 card -->
+        <div class="sand-card">
+          <div class="ev-header">
+            <span class="ev-day">Friday, June 26</span>
+          </div>
+          <div class="ev-body">
+            <div class="ev-row" style="border-bottom:none;">
+              <span class="ev-time">5:30 PM</span>
+              <div class="ev-dot" style="background:#B08040"></div>
+              <div class="ev-info">
+                <div class="ev-name">Happy Hour on the Deck</div>
+                <div class="ev-detail">Join us for drinks at the deck — Hotel Queen Kapiolani. A relaxed kickoff to the weekend!</div>
+              </div>
+              <span class="ev-badge" style="background:rgba(176,128,64,0.1);color:var(--gold);">Optional</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sunday June 28 card -->
+        <div class="sand-card">
+          <div class="ev-header">
+            <span class="ev-day">Sunday, June 28</span>
+          </div>
+          <div class="ev-body">
+            <div class="ev-row" style="border-bottom:none;">
+              <span class="ev-time">8:00 AM</span>
+              <div class="ev-dot" style="background:#4A9B6E"></div>
+              <div class="ev-info">
+                <div class="ev-name">Diamond Head Hike</div>
+                <div class="ev-detail">Early morning hike up Diamond Head — rewarded with panoramic views of Waikiki and the coastline. More details to follow.</div>
+              </div>
+              <span class="ev-badge" style="background:rgba(176,128,64,0.1);color:var(--gold);">Optional</span>
+            </div>
+          </div>
+        </div>
 
       </div>
     </div>
