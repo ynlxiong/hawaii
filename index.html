@@ -174,7 +174,7 @@ nav.hide{transform:translateY(-100%);}
 .rec-table tr:last-child td{border-bottom:none;}
 .rec-table tr:hover td{background:rgba(26,107,138,0.03);}
 .rec-table td:first-child{font-weight:500;}
-.map-link{display:inline-flex;align-items:center;color:var(--ocean);text-decoration:none;font-size:0.68rem;margin-left:4px;opacity:0.55;transition:opacity 0.12s;vertical-align:middle;}
+.map-link{display:inline-flex;align-items:color:var(--ocean);text-decoration:none;font-size:0.68rem;margin-left:4px;opacity:0.55;transition:opacity 0.12s;vertical-align:middle;}
 .map-link:hover{opacity:1;}
 
 /* loading */
@@ -267,6 +267,86 @@ footer a{color:rgba(255,255,255,0.38);}
   .gifts-section{padding:2rem 1rem;}
   .gift-section{padding:2rem 1.2rem;}
 }
+
+/* ── PHOTOS SECTION ── */
+.photos-section{
+  background:var(--bg-2);
+  padding:3.5rem 2.5rem;
+  border-top:1px solid var(--rule);
+}
+.photos-card{
+  background:linear-gradient(145deg, var(--ocean-deep) 0%, #1A6B8A 100%);
+  border-radius:16px;
+  padding:2.5rem 2rem;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+  max-width:680px;
+  margin:0 auto;
+}
+.photos-card-border{
+  position:absolute;top:10px;left:10px;right:10px;bottom:10px;
+  border:1px solid rgba(255,255,255,0.12);
+  border-radius:10px;pointer-events:none;
+}
+.photos-icon-row{
+  display:flex;justify-content:center;align-items:center;gap:0.6rem;
+  margin-bottom:1.4rem;
+  position:relative;z-index:2;
+}
+.photos-icon{
+  font-size:2.2rem;
+  line-height:1;
+  filter:drop-shadow(0 2px 8px rgba(0,0,0,0.25));
+}
+.photos-card-title{
+  font-family:'Fraunces',serif;
+  font-size:1.5rem;
+  font-weight:300;
+  font-style:italic;
+  color:white;
+  margin-bottom:0.4rem;
+  position:relative;z-index:2;
+  letter-spacing:0.02em;
+}
+.photos-card-sub{
+  font-size:0.82rem;
+  color:rgba(255,255,255,0.6);
+  margin-bottom:1.6rem;
+  line-height:1.7;
+  max-width:380px;
+  margin-left:auto;margin-right:auto;
+  position:relative;z-index:2;
+}
+.photos-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:0.5rem;
+  background:white;
+  color:var(--ocean-deep);
+  padding:0.7rem 1.8rem;
+  border-radius:8px;
+  font-size:0.88rem;
+  font-weight:500;
+  text-decoration:none;
+  letter-spacing:0.02em;
+  transition:opacity 0.18s, transform 0.18s;
+  position:relative;z-index:2;
+  box-shadow:0 4px 16px rgba(0,0,0,0.18);
+}
+.photos-btn:hover{opacity:0.9;transform:translateY(-1px);color:var(--ocean-deep);}
+.photos-note{
+  margin-top:1.2rem;
+  font-size:0.72rem;
+  color:rgba(255,255,255,0.38);
+  letter-spacing:0.05em;
+  position:relative;z-index:2;
+}
+
+@media(max-width:700px){
+  .photos-section{padding:2rem 1rem;}
+  .photos-card{padding:2rem 1.2rem;}
+}
 </style>
 </head>
 <body>
@@ -292,6 +372,7 @@ footer a{color:rgba(255,255,255,0.38);}
     <li><a class="nav-secondary" href="#guests">Who's Coming</a></li>
     <li><a class="nav-secondary" href="#food">Food</a></li>
     <li><a class="nav-secondary" href="#activities">Activities</a></li>
+    <li><a class="nav-secondary" href="#photos">Photos</a></li>
     <li><a class="nav-secondary" href="#gifts">Gifts</a></li>
   </ul>
   <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
@@ -303,6 +384,7 @@ footer a{color:rgba(255,255,255,0.38);}
   <a href="#guests" onclick="closeMenu()">Who's Coming</a>
   <a href="#food" onclick="closeMenu()">Food</a>
   <a href="#activities" onclick="closeMenu()">Activities</a>
+  <a href="#photos" onclick="closeMenu()">Photos</a>
   <a href="#gifts" onclick="closeMenu()">Gifts</a>
 </div>
 
@@ -528,6 +610,24 @@ footer a{color:rgba(255,255,255,0.38);}
   </div>
 </div>
 
+<!-- PHOTOS -->
+<div class="photos-section" id="photos">
+  <div class="gifts-inner-wrap">
+    <div class="photos-card">
+      <div class="photos-card-border"></div>
+      <div class="photos-icon-row">
+        <span class="photos-icon">📸</span>
+      </div>
+      <h2 class="photos-card-title">Share your photos</h2>
+      <p class="photos-card-sub">We've set up a shared Google Photos album for everyone — add your shots from the weekend and browse what the whole crew captured.</p>
+      <a class="photos-btn" href="https://photos.app.goo.gl/xKQ6aCC1CH9GMUT89" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        Open shared album
+      </a>
+      <p class="photos-note">Opens Google Photos · tap + to add your own</p>
+    </div>
+  </div>
+</div>
 
 <!-- GIFTS -->
 <div class="gifts-section" id="gifts">
